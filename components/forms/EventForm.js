@@ -37,13 +37,13 @@ function EventForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateEvent(formInput)
-        .then(() => router.push(`/event/${obj.firebaseKey}`));
+        .then(() => router.push('/event/event'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createEvent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateEvent(patchPayload).then(() => {
-          router.push('/');
+          router.push('/event/event');
         });
       });
     }

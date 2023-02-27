@@ -28,7 +28,7 @@ export default function EventPage() {
         <title>Events</title>
       </Head>
       <div className="text-center my-4">
-        <Link href="/new" passHref>
+        <Link href="/event/new" passHref>
           <Button>Add An Event</Button>
         </Link>
         <div className="d-flex flex-wrap">

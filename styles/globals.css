@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: whitesmoke;
   text-decoration: none;
 }
 
@@ -18,5 +18,14 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #1E1E1E;
+  color: white
+}
+
+.btn{
+  background-color: #CD5888;
+}
+
+.navbar{
+  background-color: #913175;
 }

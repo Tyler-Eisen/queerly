@@ -92,11 +92,10 @@ function EventForm({ obj }) {
         <Form.Control
           label="Price"
           type="text"
-          placeholder="Add tags to describe what your question is about."
-          name="tags"
+          placeholder="Please list the price if applicable."
+          name="price"
           value={formInput.price}
           onChange={handleChange}
-          required
         />
       </Form.Group>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} An Event</Button>

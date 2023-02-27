@@ -1,0 +1,42 @@
+{
+  "-MkeCjzm_RwWhJgfLU8f": {
+    "name": "Knox Pridefest",
+    "type": "telemed",
+    "location": "Knoxville, Tennessee",
+    "date": "2023-06-17",
+    "firebaseKey": "-MkeCjzm_RwWhJgfLU8f",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  },
+  "-MkeCjzoX-W52lIhZD71": {
+    "name": "Nashville Pride Festival",
+    "type": "in-person",
+    "location": "Nashville, Tennessee",
+    "date": "2023-06-24",
+    "firebaseKey": "-MkeCjzoX-W52lIhZD71",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  },
+  "-MkeCjzp-LyCJBrfQ0ff": {
+    "name": "Chattanooga Pride",
+    "type": "telemed",
+    "location": "Chattanooga, Tennessee",
+    "date": "2023-10-01",
+    "firebaseKey": "-MkeCjzp-LyCJBrfQ0ff",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  },
+  "-MkeCjzqfouP8hq-kWnE": {
+    "name": "Memphis Pride Fest",
+    "type": "in-person",
+    "location": "Memphis, Tennessee",
+    "date": "2023-09-30",
+    "firebaseKey": "-MkeCjzqfouP8hq-kWnE",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  },
+  "-MkeCjzr3qjOo74L6g2X": {
+    "name": "Tennessee Transgender Political Coalition Annual Conference",
+    "type": "telemed",
+    "location": "Nashville, Tennessee",
+    "date": "2023-05-13",
+    "firebaseKey": "-MkeCjzr3qjOo74L6g2X",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  }
+}

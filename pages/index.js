@@ -20,7 +20,7 @@ function Home() {
     >
       <h1>Hi Gay! Welcome To Queerly. </h1>
       <p><h2>What are you interested in today?</h2></p>
-      <Link passHref href="/event">
+      <Link passHref href="/event/event">
         <button className="btn"> Events</button>
       </Link>
       <p />

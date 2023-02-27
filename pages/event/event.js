@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import Head from 'next/head';
-import { getEvents } from '../api/eventData';
-import { useAuth } from '../utils/context/authContext';
-import EventCard from '../components/EventCard';
+import { getEvents } from '../../api/eventData';
+import { useAuth } from '../../utils/context/authContext';
+import EventCard from '../../components/EventCard';
 
 export default function EventPage() {
   const [events, setEvents] = useState([]);
@@ -28,7 +28,7 @@ export default function EventPage() {
         <title>Events</title>
       </Head>
       <div className="text-center my-4">
-        <Link href="/event/new" passHref>
+        <Link href="/new" passHref>
           <Button>Add An Event</Button>
         </Link>
         <div className="d-flex flex-wrap">

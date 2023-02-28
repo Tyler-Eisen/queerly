@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
 import { viewEventDetails } from '../../api/eventData';
+import CommentForm from '../../components/forms/AnswerForm';
 
 export default function ViewEvent() {
   const [eventDetails, setEventDetails] = useState({});
@@ -35,6 +36,7 @@ export default function ViewEvent() {
           <hr />
         </div>
       </div>
+      <div><CommentForm /></div>
       <hr />
     </>
   );

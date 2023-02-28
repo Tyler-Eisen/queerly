@@ -73,7 +73,7 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getEventAnswers = (eventFirebaseKey) => new Promise((resolve, reject) => {
+const getEventComments = (eventFirebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/event.json?orderBy="event_id"&equalTo="${eventFirebaseKey}"`, {
     method: 'GET',
     headers: {
@@ -103,6 +103,6 @@ export {
   getSingleEvent,
   deleteSingleEvent,
   updateEvent,
-  getEventAnswers,
+  getEventComments,
   viewEventDetails,
 };

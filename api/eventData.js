@@ -73,8 +73,8 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getEventComments = (eventFirebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/event.json?orderBy="event_id"&equalTo="${eventFirebaseKey}"`, {
+const getEventComments = (eventId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/event.json?orderBy="eventId"&equalTo="${eventId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'applications/json',

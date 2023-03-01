@@ -12,6 +12,7 @@ const getComments = (eventId) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.warn(data);
       if (data) {
         resolve(Object.values(data));
       } else {

@@ -2,31 +2,20 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image, ListGroup } from 'react-bootstrap';
-
 import CommentForm from '../../components/forms/CommentForm';
 import CommentCard from '../../components/CommentCard';
-import { useAuth } from '../../utils/context/authContext';
-import { viewEventDetails } from '../../api/eventData';
-import { getComments } from '../../api/commentData';
+import { getEventComments, getSingleEvent } from '../../api/eventData';
 
 function ViewEvent() {
   const [eventDetails, setEventDetails] = useState({});
   const [comments, setComments] = useState([]);
-  const { user } = useAuth();
   const router = useRouter();
   const { firebaseKey } = router.query;
 
-  const getAllTheComments = () => {
-    getComments(user.uid, firebaseKey).then(setComments);
-  };
-
   useEffect(() => {
-    viewEventDetails(firebaseKey).then(setEventDetails);
-    getAllTheComments([]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getSingleEvent(firebaseKey).then(setEventDetails);
+    getEventComments(firebaseKey).then(setComments);
   }, [firebaseKey]);
-
-  console.warn('comments:', comments);
 
   return (
     <>

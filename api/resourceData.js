@@ -2,8 +2,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-const getEvents = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events.json?orderBy="uid"&equalTo="${uid}"`, {
+const getResources = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resources.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ const getEvents = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const createEvent = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events.json`, {
+const createResource = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resources.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,9 +33,9 @@ const createEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SINGLE EVENT
-const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events/${firebaseKey}.json`, {
+// GET SINGLE RESOURCE
+const getSingleResource = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resources/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -46,9 +46,9 @@ const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// DELETE EVENT
-const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events/${firebaseKey}.json`, {
+// DELETE RESOURCE
+const deleteSingleResource = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resources/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -59,9 +59,9 @@ const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// UPDATE EVENT
-const updateEvent = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events/${payload.firebaseKey}.json`, {
+// UPDATE RESOURCE
+const updateResource = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resources/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -73,8 +73,8 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getEventComments = (eventId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments.json?orderBy="eventId"&equalTo="${eventId}"`, {
+const getResourceComments = (resourceId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resource.json?orderBy="resourceId"&equalTo="${resourceId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'applications/json',
@@ -85,8 +85,8 @@ const getEventComments = (eventId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const viewEventDetails = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events/${firebaseKey}.json`, {
+const viewResourceDetails = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/resources/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -98,11 +98,11 @@ const viewEventDetails = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getEvents,
-  createEvent,
-  getSingleEvent,
-  deleteSingleEvent,
-  updateEvent,
-  getEventComments,
-  viewEventDetails,
+  getResources,
+  createResource,
+  getSingleResource,
+  deleteSingleResource,
+  updateResource,
+  getResourceComments,
+  viewResourceDetails,
 };

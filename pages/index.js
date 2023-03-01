@@ -1,8 +1,3 @@
-/* eslint-disable react/button-has-type */
-// import { signOut } from '../utils/auth';
-// import { useAuth } from '../utils/context/authContext';
-// import { Button } from 'bootstrap';
-
 import Link from 'next/link';
 
 function Home() {
@@ -21,12 +16,14 @@ function Home() {
       <h1>Hi Gay! Welcome To Queerly. </h1>
       <p><h2>What are you interested in today?</h2></p>
       <Link passHref href="/event/event">
-        <button className="btn"> Events</button>
+        <button type="button" className="btn"> Events</button>
       </Link>
       <p />
-      <button className="btn" type="button">
-        Resources
-      </button>
+      <Link passHref href="/resource/resource">
+        <button className="btn" type="button">
+          Resources
+        </button>
+      </Link>
     </div>
   );
 }

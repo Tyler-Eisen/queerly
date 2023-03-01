@@ -10,7 +10,7 @@ const initialState = {
   comment: '',
 };
 
-function CommentForm({ obj }) {
+function CommentForm({ obj, onUpdate }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { firebaseKey } = router.query;
@@ -40,6 +40,7 @@ function CommentForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         updateComment(patchPayload).then(() => {
           router.push(`/event/${firebaseKey}`);
+          onUpdate(); // <-- call onUpdate function to trigger re-render
         });
       });
     }
@@ -74,6 +75,7 @@ CommentForm.propTypes = {
     comment: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
+  onUpdate: PropTypes.func.isRequired, // <-- add onUpdate prop
 };
 
 CommentForm.defaultProps = {

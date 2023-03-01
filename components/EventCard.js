@@ -16,7 +16,7 @@ function EventCard({ eventObj, onUpdate }) {
   }, [eventObj, firebaseKey]);
 
   const deleteThisEvent = () => {
-    if (window.confirm('Delete this Event?')) {
+    if (window.confirm('Sure you want to elete this event?')) {
       deleteSingleEvent(eventObj.firebaseKey).then(() => onUpdate());
     }
   };

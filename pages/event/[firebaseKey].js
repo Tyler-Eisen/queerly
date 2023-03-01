@@ -47,7 +47,7 @@ function ViewEvent() {
         <ListGroup>
           {comments.map((comment) => (
             <ListGroup.Item key={comment.firebaseKey}>
-              <CommentCard commentObj={comment} />
+              <CommentCard commentObj={comment} onUpdate={() => getEventComments(firebaseKey).then(setComments)} />
             </ListGroup.Item>
           ))}
         </ListGroup>

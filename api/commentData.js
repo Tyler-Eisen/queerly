@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 // GET ALL COMMENTS
-const getComments = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments.json?orderBy="uid"&equalTo="${uid}"`, {
+const getComments = (eventId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/comments.json?orderBy="eventId"&equalTo="${eventId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -12,6 +12,7 @@ const getComments = (uid) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.warn(data);
       if (data) {
         resolve(Object.values(data));
       } else {

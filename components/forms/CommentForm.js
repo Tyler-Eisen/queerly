@@ -35,7 +35,7 @@ function CommentForm({ obj }) {
       updateComment(formInput)
         .then(() => router.push(`/event/${firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, event_id: firebaseKey };
+      const payload = { ...formInput, uid: user.uid, eventId: firebaseKey };
       createComment(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateComment(patchPayload).then(() => {

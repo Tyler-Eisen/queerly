@@ -38,7 +38,8 @@ function ViewEvent() {
           <hr />
         </div>
       </div>
-      <div><CommentForm /></div>
+      <div> <CommentForm onUpdate={() => getEventComments(firebaseKey).then(setComments)} />
+      </div>
       <hr />
       <Head>
         <title>Comments</title>

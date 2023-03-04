@@ -16,7 +16,6 @@ function ViewEvent() {
     getSingleEvent(firebaseKey).then(setEventDetails);
     getEventComments(firebaseKey).then(setComments);
   }, [firebaseKey]);
-
   return (
     <>
       <Head>
@@ -38,7 +37,7 @@ function ViewEvent() {
           <hr />
         </div>
       </div>
-      <div> <CommentForm onUpdate={() => getEventComments(firebaseKey).then(setComments)} />
+      <div> <CommentForm onUpdate={() => getEventComments(firebaseKey).then(setComments)} firebaseKey={firebaseKey} />
       </div>
       <hr />
       <Head>

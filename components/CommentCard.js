@@ -6,19 +6,15 @@ import PropTypes from 'prop-types';
 import { deleteSingleComment } from '../api/commentData';
 
 function CommentCard({ commentObj, onUpdate }) {
-  // const [commentDetails] = useState({});
-  // const router = useRouter();
-  // const { firebaseKey } = router.query;
-
-  // useEffect(() => {
-  //   getSingleComment(firebaseKey).then(setCommentDetails);
-  // }, [firebaseKey]);
-
   const deleteThisComment = () => {
     if (window.confirm('Sure you want to delete this comment?')) {
       deleteSingleComment(commentObj.firebaseKey).then(() => onUpdate());
     }
   };
+
+  if (!commentObj) {
+    return null;
+  }
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Header>{commentObj.comment}</Card.Header>

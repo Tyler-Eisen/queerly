@@ -15,9 +15,13 @@ function CommentForm({ obj, onUpdate }) {
   const router = useRouter();
   const { firebaseKey } = router.query;
   const { user } = useAuth();
+  // console.warn('formInput:', formInput);
+  console.warn('firebaseKey:', firebaseKey);
+  // console.warn('obj:', obj);
+  // console.warn('user:', user);
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
+    if (obj?.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
   const handleChange = (e) => {
@@ -31,7 +35,7 @@ function CommentForm({ obj, onUpdate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
+    if (obj?.firebaseKey) {
       updateComment(formInput)
         .then(() => router.push(`/event/${firebaseKey}`));
     } else {
@@ -39,8 +43,9 @@ function CommentForm({ obj, onUpdate }) {
       createComment(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateComment(patchPayload).then(() => {
+          onUpdate();
           router.push(`/event/${firebaseKey}`);
-          onUpdate(); // <-- call onUpdate function to trigger re-render
+          setFormInput(initialState);
         });
       });
     }
@@ -64,7 +69,7 @@ function CommentForm({ obj, onUpdate }) {
             required
           />
         </Form.Group>
-        <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} A Comment</Button>
+        <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Comment</Button>
       </Form>
     </>
   );
@@ -75,7 +80,8 @@ CommentForm.propTypes = {
     comment: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
-  onUpdate: PropTypes.func.isRequired, // <-- add onUpdate prop
+  onUpdate: PropTypes.func.isRequired,
+  firebaseKey: PropTypes.string.isRequired,
 };
 
 CommentForm.defaultProps = {

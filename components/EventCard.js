@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { deleteSingleEvent, getSingleEvent } from '../api/eventData';
+import { getSingleEvent } from '../api/eventData';
+import { deleteEventComments } from '../api/mergedData';
 
 function EventCard({ eventObj, onUpdate }) {
   const [eventDetails, setEventDetails] = useState({});
@@ -17,7 +18,7 @@ function EventCard({ eventObj, onUpdate }) {
 
   const deleteThisEvent = () => {
     if (window.confirm('Sure you want to elete this event?')) {
-      deleteSingleEvent(eventObj.firebaseKey).then(() => onUpdate());
+      deleteEventComments(eventObj.firebaseKey).then(() => onUpdate());
     }
   };
 

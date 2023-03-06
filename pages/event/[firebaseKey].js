@@ -11,6 +11,9 @@ function ViewEvent() {
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { firebaseKey } = router.query;
+  const updateCommentsList = () => {
+    getEventComments(firebaseKey).then(setComments);
+  };
 
   useEffect(() => {
     getSingleEvent(firebaseKey).then(setEventDetails);
@@ -37,7 +40,7 @@ function ViewEvent() {
           <hr />
         </div>
       </div>
-      <div> <CommentForm onUpdate={() => getEventComments(firebaseKey).then(setComments)} firebaseKey={firebaseKey} />
+      <div> <CommentForm onUpdate={updateCommentsList} />
       </div>
       <hr />
       <Head>

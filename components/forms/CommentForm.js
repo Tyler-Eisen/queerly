@@ -15,10 +15,6 @@ function CommentForm({ obj, onUpdate }) {
   const router = useRouter();
   const { firebaseKey } = router.query;
   const { user } = useAuth();
-  // console.warn('formInput:', formInput);
-  console.warn('firebaseKey:', firebaseKey);
-  // console.warn('obj:', obj);
-  // console.warn('user:', user);
 
   useEffect(() => {
     if (obj?.firebaseKey) setFormInput(obj);
@@ -37,7 +33,7 @@ function CommentForm({ obj, onUpdate }) {
     e.preventDefault();
     if (obj?.firebaseKey) {
       updateComment(formInput)
-        .then(() => router.push(`/event/${firebaseKey}`));
+        .then(() => router.push(`/event/${obj.eventId}`));
     } else {
       const payload = { ...formInput, uid: user.uid, eventId: firebaseKey };
       createComment(payload).then(({ name }) => {
@@ -79,6 +75,7 @@ CommentForm.propTypes = {
   obj: PropTypes.shape({
     comment: PropTypes.string,
     firebaseKey: PropTypes.string,
+    eventId: PropTypes.string,
   }),
   onUpdate: PropTypes.func.isRequired,
   firebaseKey: PropTypes.string.isRequired,

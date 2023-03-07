@@ -30,7 +30,7 @@ function ResourceCard({ resourceObj, onUpdate }) {
       }}
       >
         <Link href={`/resource/${resourceObj.firebaseKey}`} passHref>
-          <Card.Header style={{ cursor: 'pointer' }}>{resourceDetails.name}</Card.Header>
+          <Card.Header className="card-header-custom" style={{ cursor: 'pointer' }}>{resourceDetails.name}</Card.Header>
         </Link>
         <ListGroup variant="flush">
           <ListGroup.Item>{resourceObj.price}</ListGroup.Item>

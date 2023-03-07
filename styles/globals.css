@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: whitesmoke;
+  color: white;
   text-decoration: none;
 }
 
@@ -30,6 +30,6 @@ body {
   background-color: #913175;
 }
 
-.event-card-header{
-background-color:#913175 #913175;
+.card-header-custom {
+  background-color: #913175;
 }

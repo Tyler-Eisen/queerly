@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { createEvent, updateEvent } from '../../api/eventData';
 import { useAuth } from '../../utils/context/authContext';
+import { createResource, updateResource } from '../../api/resourceData';
 
 const initialState = {
   name: '',
-  date: '',
+  type: '',
   location: '',
   price: '',
   firebaseKey: '',
 };
 
-function EventForm({ obj }) {
+function ResourceForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
@@ -34,14 +34,14 @@ function EventForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateEvent(formInput)
-        .then(() => router.push('/event/event'));
+      updateResource(formInput)
+        .then(() => router.push('/resource/resource'));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      createEvent(payload).then(({ name }) => {
+      createResource(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateEvent(patchPayload).then(() => {
-          router.push('/event/event');
+        updateResource(patchPayload).then(() => {
+          router.push('/resource/resource');
         });
       });
     }
@@ -54,7 +54,7 @@ function EventForm({ obj }) {
         <Form.Control
           label="Name"
           type="text"
-          placeholder="What's this event called?."
+          placeholder="What's this resource called?."
           name="name"
           value={formInput.name}
           onChange={handleChange}
@@ -62,25 +62,25 @@ function EventForm({ obj }) {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
-        <Form.Label>Date</Form.Label>
+        <Form.Label>Location</Form.Label>
         <Form.Control
-          label="Date"
+          label="location"
           type="text"
-          placeholder="When is this event taking place?"
-          name="date"
-          value={formInput.date}
+          placeholder="When is this resource available?"
+          name="location"
+          value={formInput.location}
           onChange={handleChange}
           required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
-        <Form.Label>Location</Form.Label>
+        <Form.Label>Type</Form.Label>
         <Form.Control
-          label="Location"
+          label="Type"
           type="text"
-          placeholder="Where is this event taking place?"
-          name="location"
-          value={formInput.location}
+          placeholder="Is this resource in person, online, or both?"
+          name="type"
+          value={formInput.type}
           onChange={handleChange}
           required
         />
@@ -90,29 +90,29 @@ function EventForm({ obj }) {
         <Form.Control
           label="Price"
           type="text"
-          placeholder="Please list the price if applicable."
+          placeholder="Please list the price range."
           name="price"
           value={formInput.price}
           onChange={handleChange}
         />
       </Form.Group>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} An Event</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Uplocation' : 'Create'} An resource</Button>
     </Form>
   );
 }
 
-EventForm.propTypes = {
+ResourceForm.propTypes = {
   obj: PropTypes.shape({
-    event: PropTypes.string,
-    date: PropTypes.string,
+    name: PropTypes.string,
     location: PropTypes.string,
+    type: PropTypes.string,
     price: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
 
-EventForm.defaultProps = {
+ResourceForm.defaultProps = {
   obj: initialState,
 };
 
-export default EventForm;
+export default ResourceForm;

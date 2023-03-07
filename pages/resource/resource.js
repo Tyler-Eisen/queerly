@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react';
-// import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import Head from 'next/head';
-import { getResources } from '../../api/resourceData'; // updated import
+import { getResources } from '../../api/resourceData';
 import { useAuth } from '../../utils/context/authContext';
-import ResourceCard from '../../components/ResourceCard'; // updated import
+import ResourceCard from '../../components/ResourceCard';
 
-export default function ResourcePage() { // updated function name
-  const [resources, setResources] = useState([]); // updated state variable name
+export default function ResourcePage() {
+  const [resources, setResources] = useState([]);
 
   const { user } = useAuth();
 
   const getAllTheResources = () => {
-    getResources(user.uid).then(setResources); // updated function name
+    getResources(user.uid).then(setResources);
   };
 
   useEffect(() => {
     getAllTheResources();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.warn(resources);
 
   return (
     <>
@@ -33,7 +31,7 @@ export default function ResourcePage() { // updated function name
         </Link>
         <div className="d-flex flex-wrap">
           {resources.map((resource) => (
-            <ResourceCard key={resource.firebaseKey} resourceObj={resource} onUpdate={getAllTheResources} /> // updated variable name
+            <ResourceCard key={resource.firebaseKey} resourceObj={resource} onUpdate={getAllTheResources} />
           ))}
         </div>
       </div>

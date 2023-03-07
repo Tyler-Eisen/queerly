@@ -5,7 +5,8 @@
   "location": "Knoxville, Tennessee",
   "date": "2023-06-17",
   "firebaseKey": "-MkeCjzm_RwWhJgfLU8f",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://images.squarespace-cdn.com/content/v1/53290058e4b046525fe20987/29e589a8-bfec-4fc5-bd80-ff78d3ef41ed/KP-square-preview.png"
   },
   "-MkeCjzoX-W52lIhZD71": {
   "name": "Nashville Pride Festival",
@@ -13,7 +14,8 @@
   "location": "Nashville, Tennessee",
   "date": "2023-06-24",
   "firebaseKey": "-MkeCjzoX-W52lIhZD71",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://assets0.dostuffmedia.com/uploads/aws_asset/aws_asset/13212818/0e2c75f1-c100-40e7-9127-7a19fc72f0c9.png"
   },
   "-MkeCjzp-LyCJBrfQ0ff": {
   "name": "Chattanooga Pride",
@@ -21,7 +23,8 @@
   "location": "Chattanooga, Tennessee",
   "date": "2023-10-01",
   "firebaseKey": "-MkeCjzp-LyCJBrfQ0ff",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://static.wixstatic.com/media/c4d97a_89000e55c4dd4ac1b5d27f1dedcefcb6~mv2.png"
   },
   "-MkeCjzqfouP8hq-kWnE": {
   "name": "Memphis Pride Fest",
@@ -29,7 +32,8 @@
   "location": "Memphis, Tennessee",
   "date": "2023-09-30",
   "firebaseKey": "-MkeCjzqfouP8hq-kWnE",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://www.gaytravel4u.com/wp-content/uploads/2021/05/Memphis-Gay-Pride-Fest-Parade-2.jpg"
   },
   "-MkeCjzr3qjOo74L6g2X": {
   "name": "Tennessee Transgender Political Coalition Annual Conference",
@@ -37,6 +41,7 @@
   "location": "Nashville, Tennessee",
   "date": "2023-05-13",
   "firebaseKey": "-MkeCjzr3qjOo74L6g2X",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2"
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://ballotpedia.s3.amazonaws.com/images/e/eb/Tennessee_Transgender_Political_Coalition.jpg"
   }
   }

@@ -32,7 +32,7 @@ function EventCard({ eventObj, onUpdate }) {
       }}
       >
         <Link href={`/event/${eventObj.firebaseKey}`} passHref>
-          <Card.Header className="event-card-header" style={{ cursor: 'pointer' }}>{eventDetails.name}</Card.Header>
+          <Card.Header className="card-header-custom" style={{ cursor: 'pointer' }}>{eventDetails.name}</Card.Header>
         </Link>
         <ListGroup variant="flush">
           <ListGroup.Item>{eventObj.date}</ListGroup.Item>

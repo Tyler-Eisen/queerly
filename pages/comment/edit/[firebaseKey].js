@@ -15,12 +15,6 @@ export default function EditComment() {
     getSingleComment(firebaseKey).then(setEditItem);
   }, [firebaseKey]);
 
-  // const handleUpdate = (updatedItem) => {
-  //   console.warn(updatedItem);
-  //   console.warn('hello');
-  //   updateComment(updatedItem).then(() => router.push(`/event/${editItem.eventId}`));
-  // };
-
   return (
     <>
       <Head>

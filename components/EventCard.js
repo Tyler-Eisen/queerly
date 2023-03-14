@@ -6,18 +6,22 @@ import { Button, Card, ListGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { getSingleEvent } from '../api/eventData';
 import { deleteEventComments } from '../api/mergedData';
+import { useAuth } from '../utils/context/authContext';
 
 function EventCard({ eventObj, onUpdate }) {
+  const { user } = useAuth();
   const [eventDetails, setEventDetails] = useState({});
-  const router = useRouter;
-  const { firebaseKey } = router().query;
+  const router = useRouter();
+  const { firebaseKey } = router.query;
 
   useEffect(() => {
     getSingleEvent(eventObj.firebaseKey).then(setEventDetails);
   }, [eventObj, firebaseKey]);
 
+  const isCurrentUserEvent = user && user.uid === eventObj.uid;
+
   const deleteThisEvent = () => {
-    if (window.confirm('Sure you want to elete this event?')) {
+    if (window.confirm('Sure you want to delete this event?')) {
       deleteEventComments(eventObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -32,7 +36,9 @@ function EventCard({ eventObj, onUpdate }) {
       }}
       >
         <Link href={`/event/${eventObj.firebaseKey}`} passHref>
-          <Card.Header className="card-header-custom" style={{ cursor: 'pointer' }}>{eventDetails.name}</Card.Header>
+          <Card.Header className="card-header-custom" style={{ cursor: 'pointer' }}>
+            {eventDetails.name}
+          </Card.Header>
         </Link>
         <ListGroup variant="flush">
           <ListGroup.Item>{eventObj.date}</ListGroup.Item>
@@ -40,12 +46,18 @@ function EventCard({ eventObj, onUpdate }) {
           <ListGroup.Item>{eventObj.name}</ListGroup.Item>
           <ListGroup.Item>{eventObj.type}</ListGroup.Item>
         </ListGroup>
-        <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>
-          <Button variant="info" className="m-2">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisEvent} className="m-2">
-          DELETE
-        </Button>
+        {isCurrentUserEvent ? (
+          <>
+            <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>
+              <Button variant="info" className="m-2">
+                EDIT
+              </Button>
+            </Link>
+            <Button variant="danger" onClick={deleteThisEvent} className="m-2">
+              DELETE
+            </Button>
+          </>
+        ) : null}
       </Card>
     </>
   );
@@ -59,9 +71,9 @@ EventCard.propTypes = {
     name: PropTypes.string,
     type: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
-  // onDelete: PropTypes.func.isRequired,
 };
 
 export default EventCard;

@@ -5,8 +5,10 @@ import { Button, Card, ListGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { deleteSingleResource, getSingleResource } from '../api/resourceData';
+import { useAuth } from '../utils/context/authContext';
 
 function ResourceCard({ resourceObj, onUpdate }) {
+  const { user } = useAuth();
   const [resourceDetails, setResourceDetails] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
@@ -38,12 +40,16 @@ function ResourceCard({ resourceObj, onUpdate }) {
           <ListGroup.Item>{resourceObj.name}</ListGroup.Item>
           <ListGroup.Item>{resourceObj.type}</ListGroup.Item>
         </ListGroup>
-        <Link href={`/resource/edit/${resourceObj.firebaseKey}`} passHref>
-          <Button variant="info" className="m-2">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisResource} className="m-2">
-          DELETE
-        </Button>
+        {user && user.uid === resourceObj.uid && (
+          <>
+            <Link href={`/resource/edit/${resourceObj.firebaseKey}`} passHref>
+              <Button variant="info" className="m-2">EDIT</Button>
+            </Link>
+            <Button variant="danger" onClick={deleteThisResource} className="m-2">
+              DELETE
+            </Button>
+          </>
+        )}
       </Card>
     </>
   );
@@ -56,6 +62,7 @@ ResourceCard.propTypes = {
     location: PropTypes.string,
     firebaseKey: PropTypes.string,
     type: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

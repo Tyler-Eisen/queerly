@@ -43,5 +43,33 @@
     "firebaseKey": "-Mke56fAVN99R75Dw-CK",
     "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
     "image": "https://img1.wsimg.com/isteam/ip/ffe42cb6-4ca5-4ce9-bd1f-184904aeae26/Logo%2008-2022%20Update%20copy%20(1).png/:/rs=w:2400,h:2000,cg:true,m/cr=w:2400,h:2000"
+  },
+  
+    "-Mke56fBZr5l5K5Y5HmL": {
+      "name": "Knoxville LGBT Chamber of Commerce",
+      "type": "telemed",
+      "location": "Knoxville, Tennessee",
+      "price": 55,
+      "firebaseKey": "-Mke56fBZr5l5K5Y5HmL",
+      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+      "image": "https://www.knoxvillechamber.com/upload/2021/02/19/2021logoColorLarge.jpg"
+    },
+    "-Mke56fC0T2DFuO7V1_s": {
+      "name": "Tennessee Vals",
+      "type": "in-person",
+      "location": "Chattanooga, Tennessee",
+      "price": 70,
+      "firebaseKey": "-Mke56fC0T2DFuO7V1_s",
+      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+      "image": "https://tvals.org/wp-content/uploads/2017/06/transgender-equality.png"
+    },
+    "-Mke56fDJiTFa0X9aW-e": {
+      "name": "PFLAG Nashville",
+      "type": "telemed",
+      "location": "Nashville, Tennessee",
+      "price": 45,
+      "firebaseKey": "-Mke56fDJiTFa0X9aW-e",
+      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+      "image": "https://pbs.twimg.com/profile_images/878709371894738945/MpNLP8kU_400x400.jpg"
+    }
   }
-}

@@ -1,47 +1,76 @@
 {
   "-MkeCjzm_RwWhJgfLU8f": {
-  "name": "Knox Pridefest",
-  "price": 5,
-  "location": "Knoxville, Tennessee",
-  "date": "2023-06-17",
-  "firebaseKey": "-MkeCjzm_RwWhJgfLU8f",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-  "image": "https://images.squarespace-cdn.com/content/v1/53290058e4b046525fe20987/29e589a8-bfec-4fc5-bd80-ff78d3ef41ed/KP-square-preview.png"
+    "name": "Knox Pridefest",
+    "price": 5,
+    "location": "Knoxville, Tennessee",
+    "date": "2023-06-17",
+    "firebaseKey": "-MkeCjzm_RwWhJgfLU8f",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+    "image": "https://images.squarespace-cdn.com/content/v1/53290058e4b046525fe20987/29e589a8-bfec-4fc5-bd80-ff78d3ef41ed/KP-square-preview.png"
   },
   "-MkeCjzoX-W52lIhZD71": {
-  "name": "Nashville Pride Festival",
-  "price": 15,
-  "location": "Nashville, Tennessee",
-  "date": "2023-06-24",
-  "firebaseKey": "-MkeCjzoX-W52lIhZD71",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-  "image": "https://assets0.dostuffmedia.com/uploads/aws_asset/aws_asset/13212818/0e2c75f1-c100-40e7-9127-7a19fc72f0c9.png"
+    "name": "Nashville Pride Festival",
+    "price": 15,
+    "location": "Nashville, Tennessee",
+    "date": "2023-06-24",
+    "firebaseKey": "-MkeCjzoX-W52lIhZD71",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+    "image": "https://assets0.dostuffmedia.com/uploads/aws_asset/aws_asset/13212818/0e2c75f1-c100-40e7-9127-7a19fc72f0c9.png"
   },
   "-MkeCjzp-LyCJBrfQ0ff": {
-  "name": "Chattanooga Pride",
-  "price": 23,
-  "location": "Chattanooga, Tennessee",
-  "date": "2023-10-01",
-  "firebaseKey": "-MkeCjzp-LyCJBrfQ0ff",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-  "image": "https://static.wixstatic.com/media/c4d97a_89000e55c4dd4ac1b5d27f1dedcefcb6~mv2.png"
+    "name": "Chattanooga Pride",
+    "price": 23,
+    "location": "Chattanooga, Tennessee",
+    "date": "2023-10-01",
+    "firebaseKey": "-MkeCjzp-LyCJBrfQ0ff",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+    "image": "https://static.wixstatic.com/media/c4d97a_89000e55c4dd4ac1b5d27f1dedcefcb6~mv2.png"
   },
   "-MkeCjzqfouP8hq-kWnE": {
-  "name": "Memphis Pride Fest",
-  "price": 10,
-  "location": "Memphis, Tennessee",
-  "date": "2023-09-30",
-  "firebaseKey": "-MkeCjzqfouP8hq-kWnE",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-  "image": "https://www.gaytravel4u.com/wp-content/uploads/2021/05/Memphis-Gay-Pride-Fest-Parade-2.jpg"
+    "name": "Memphis Pride Fest",
+    "price": 10,
+    "location": "Memphis, Tennessee",
+    "date": "2023-09-30",
+    "firebaseKey": "-MkeCjzqfouP8hq-kWnE",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+    "image": "https://www.gaytravel4u.com/wp-content/uploads/2021/05/Memphis-Gay-Pride-Fest-Parade-2.jpg"
   },
   "-MkeCjzr3qjOo74L6g2X": {
-  "name": "Tennessee Transgender Political Coalition Annual Conference",
-  "price": 29,
-  "location": "Nashville, Tennessee",
-  "date": "2023-05-13",
-  "firebaseKey": "-MkeCjzr3qjOo74L6g2X",
-  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-  "image": "https://ballotpedia.s3.amazonaws.com/images/e/eb/Tennessee_Transgender_Political_Coalition.jpg"
+    "name": "Tennessee Transgender Political Coalition Annual Conference",
+    "price": 29,
+    "location": "Nashville, Tennessee",
+    "date": "2023-05-13",
+    "firebaseKey": "-MkeCjzr3qjOo74L6g2X",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+    "image": "https://ballotpedia.s3.amazonaws.com/images/e/eb/Tennessee_Transgender_Political_Coalition.jpg"
+  },
+  
+    "-MkeCjzrM62VLG27vMSc": {
+      "name": "Knoxville Gay Men's Chorus - A Time for Us Concert",
+      "price": 20,
+      "location": "Knoxville, Tennessee",
+      "date": "2023-04-15",
+      "firebaseKey": "-MkeCjzrM62VLG27vMSc",
+      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+      "image": "https://npr.brightspotcdn.com/legacy/sites/wuot/files/201910/KGMC.jpg"
+    },
+    "-MkeCjzsISntjPlNx-Qc": {
+      "name": "Chattanooga Queer Art & Film Festival",
+      "price": 10,
+      "location": "Chattanooga, Tennessee",
+      "date": "2023-08-11",
+      "firebaseKey": "-MkeCjzsISntjPlNx-Qc",
+      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+      "image": "https://cdn-az.allevents.in/events5/banners/8f044f7bb07c2984432993ed1c00b7181ce0e50d5115e300b391cd3e565b1896-rimg-w1080-h1080-gmir.jpg?v=1677889090"
+    },
+    "-MkeCjzt9zVupkgQ2sYs": {
+      "name": "Drag Brunch at Club XYZ",
+      "price": 25,
+      "location": "Nashville, Tennessee",
+      "date": "2023-07-09",
+      "firebaseKey": "-MkeCjzt9zVupkgQ2sYs",
+      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+      "image": "https://assets.simpleviewinc.com/simpleview/image/upload/crm/knoxville/34064_10150212957065274_6295556_n0-a97f14945056a34_a97f15de-5056-a348-3aba2d39117acb54.jpg"
+    }
   }
-  }
+  

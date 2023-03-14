@@ -13,7 +13,6 @@ export default function EventPage() {
 
   const getAllTheEvents = () => {
     getEvents(user.uid).then(setEvents);
-    console.warn(events);
   };
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export default function EventPage() {
         </Link>
         <div className="d-flex flex-wrap">
           {events.map((event) => (
-            <EventCard key={event.firebaseKey} eventObj={event} onUpdate={getAllTheEvents} />
+            <EventCard key={event.firebaseKey} uid={user.uid} eventObj={event} onUpdate={getAllTheEvents} />
           ))}
         </div>
       </div>

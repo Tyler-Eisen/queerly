@@ -13,6 +13,13 @@ const initialState = {
   firebaseKey: '',
 };
 
+const priceOptions = [
+  'Free',
+  '$10-$50',
+  '$50-$100',
+  '> $100',
+];
+
 function EventForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
@@ -87,16 +94,19 @@ function EventForm({ obj }) {
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
         <Form.Label>Price</Form.Label>
-        <Form.Control
+        <Form.Select
           label="Price"
-          type="text"
-          placeholder="Please list the price if applicable."
           name="price"
           value={formInput.price}
           onChange={handleChange}
-        />
+        >
+          <option value="">Select a price range</option>
+          {priceOptions.map((option) => (
+            <option key={option} value={option}>{option}</option>
+          ))}
+        </Form.Select>
       </Form.Group>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} An Event</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} A Resource</Button>
     </Form>
   );
 }

@@ -6,7 +6,6 @@ const viewEventDetails = (eventFirebaseKey) => new Promise((resolve, reject) => 
     .then((eventObject) => {
       getEventComments(eventObject.firebaseKey)
         .then((commentsArray) => {
-          console.warn(commentsArray);
           resolve({ ...eventObject, comments: commentsArray });
         })
         .catch((error) => reject(error));
@@ -16,7 +15,6 @@ const viewEventDetails = (eventFirebaseKey) => new Promise((resolve, reject) => 
 
 const deleteEventComments = (eventId) => new Promise((resolve, reject) => {
   getEventComments(eventId).then((commentsArray) => {
-    console.warn(commentsArray, 'Event Comments');
     const deleteCommentPromises = commentsArray.map((comment) => deleteSingleComment(comment.firebaseKey));
 
     Promise.all(deleteCommentPromises).then(() => {

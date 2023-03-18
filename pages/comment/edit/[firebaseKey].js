@@ -6,9 +6,9 @@ import CommentForm from '../../../components/forms/CommentForm';
 
 export default function EditComment() {
   const [editItem, setEditItem] = useState({});
-  // console.warn(editItem.eventId);
+
   const router = useRouter();
-  // TODO: grab the firebasekey and eventId
+
   const { firebaseKey } = router.query;
 
   useEffect(() => {

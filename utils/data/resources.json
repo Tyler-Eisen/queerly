@@ -24,7 +24,7 @@
     "price": 40,
     "firebaseKey": "-Mke56f9h70wWQ2Dkx99",
     "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-    "image": "https://scontent-atl3-1.xx.fbcdn.net/v/t39.30808-6/277163388_339701924863459_586278865630191834_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=KTG-4S7qZs0AX_h8OTY&_nc_ht=scontent-atl3-1.xx&oh=00_AfDJW1ipllSraXCmGSeWDMKdwnsOxwGe5GRePcHy7wqSSg&oe=640D4098"
+    "image": "https://gaycenter.org/wp-content/uploads/2018/05/centerlink_v2.png"
   },
   "-Mke56fAVN99R75Dw-CJ": {
     "name": "The Tribe",
@@ -45,15 +45,15 @@
     "image": "https://img1.wsimg.com/isteam/ip/ffe42cb6-4ca5-4ce9-bd1f-184904aeae26/Logo%2008-2022%20Update%20copy%20(1).png/:/rs=w:2400,h:2000,cg:true,m/cr=w:2400,h:2000"
   },
   
-    "-Mke56fBZr5l5K5Y5HmL": {
-      "name": "Knoxville LGBT Chamber of Commerce",
-      "type": "telemed",
-      "location": "Knoxville, Tennessee",
-      "price": 55,
-      "firebaseKey": "-Mke56fBZr5l5K5Y5HmL",
-      "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
-      "image": "https://www.knoxvillechamber.com/upload/2021/02/19/2021logoColorLarge.jpg"
-    },
+  "-Mkft0WV7k-1wJAm0tY_": {
+    "name": "The Body is Not an Apology",
+    "type": "telemed",
+    "location": "Online",
+    "price": 0,
+    "firebaseKey": "-Mkft0WV7k-1wJAm0tY_",
+    "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+    "image": "https://cdn.shopify.com/s/files/1/2069/6165/articles/body-not-an-apology-600x600_ec0db819-66cd-43bc-b614-0db191c617e2.png?v=1626211297"
+  },
     "-Mke56fC0T2DFuO7V1_s": {
       "name": "Tennessee Vals",
       "type": "in-person",

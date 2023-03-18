@@ -1,10 +1,10 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { deleteSingleResource, getSingleResource } from '../api/resourceData';
+import { getSingleResource, deleteSingleResource } from '../api/resourceData';
 import { useAuth } from '../utils/context/authContext';
 
 function ResourceCard({ resourceObj, onUpdate }) {
@@ -17,39 +17,60 @@ function ResourceCard({ resourceObj, onUpdate }) {
     getSingleResource(resourceObj.firebaseKey).then(setResourceDetails);
   }, [resourceObj, firebaseKey]);
 
+  const isCurrentUserResource = user && user.uid === resourceObj.uid;
+
   const deleteThisResource = () => {
-    if (window.confirm('Delete this resource?')) {
+    if (window.confirm('Are you sure you want to delete this resource?')) {
       deleteSingleResource(resourceObj.firebaseKey).then(() => onUpdate());
     }
   };
+
+  const cardStyles = {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    backgroundColor: '#1E1E1E',
+    color: '#fff',
+    margin: '10px',
+    padding: '10px',
+    boxSizing: 'border-box',
+  };
+
+  const cardImageStyles = {
+    width: '200px',
+    height: '200px',
+    objectFit: 'cover',
+    marginRight: '20px',
+  };
+
   return (
     <>
       <Head>
         <title>Resources</title>
       </Head>
-      <Card style={{
-        width: '18rem', marginLeft: '10px', marginRight: '10px', marginTop: '35px',
-      }}
-      >
-        <Link href={`/resource/${resourceObj.firebaseKey}`} passHref>
-          <Card.Header className="card-header-custom" style={{ cursor: 'pointer' }}>{resourceDetails.name}</Card.Header>
-        </Link>
-        <ListGroup variant="flush">
-          <ListGroup.Item>{resourceObj.price}</ListGroup.Item>
-          <ListGroup.Item>{resourceObj.location}</ListGroup.Item>
-          <ListGroup.Item>{resourceObj.name}</ListGroup.Item>
-          <ListGroup.Item>{resourceObj.type}</ListGroup.Item>
-        </ListGroup>
-        {user && user.uid === resourceObj.uid && (
-          <>
-            <Link href={`/resource/edit/${resourceObj.firebaseKey}`} passHref>
-              <Button variant="info" className="m-2">EDIT</Button>
-            </Link>
-            <Button variant="danger" onClick={deleteThisResource} className="m-2">
-              DELETE
-            </Button>
-          </>
-        )}
+      <Card style={cardStyles}>
+        <img src={resourceDetails.image} alt={resourceDetails.name} style={cardImageStyles} />
+        <div>
+          <Link href={`/resource/${resourceObj.firebaseKey}`} passHref>
+            <h3 style={{ cursor: 'pointer' }}>{resourceDetails.name}</h3>
+          </Link>
+          <p>{resourceObj.price}</p>
+          <p>{resourceObj.location}</p>
+          <p>{resourceObj.name}</p>
+          <p>{resourceObj.type}</p>
+          {isCurrentUserResource ? (
+            <>
+              <Link href={`/resource/edit/${resourceObj.firebaseKey}`} passHref>
+                <Button size="sm" className="m-2">
+                  EDIT
+                </Button>
+              </Link>
+              <Button variant="danger" size="sm" onClick={deleteThisResource} className="m-2">
+                DELETE
+              </Button>
+            </>
+          ) : null}
+        </div>
       </Card>
     </>
   );

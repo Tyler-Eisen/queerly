@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { getSingleEvent } from '../api/eventData';
 import { deleteEventComments } from '../api/mergedData';
@@ -26,38 +26,51 @@ function EventCard({ eventObj, onUpdate }) {
     }
   };
 
+  const cardStyles = {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    backgroundColor: '#1E1E1E',
+    color: '#fff',
+    margin: '10px',
+    padding: '10px',
+    boxSizing: 'border-box',
+  };
+
+  const cardImageStyles = {
+    width: '200px',
+    height: '200px',
+    objectFit: 'cover',
+    marginRight: '20px',
+  };
+
   return (
     <>
       <Head>
         <title>Events</title>
       </Head>
-      <Card style={{
-        width: '18rem', marginLeft: '10px', marginRight: '10px', marginTop: '35px',
-      }}
-      >
-        <Link href={`/event/${eventObj.firebaseKey}`} passHref>
-          <Card.Header className="card-header-custom" style={{ cursor: 'pointer' }}>
-            {eventDetails.name}
-          </Card.Header>
-        </Link>
-        <ListGroup variant="flush">
-          <ListGroup.Item>{eventObj.date}</ListGroup.Item>
-          <ListGroup.Item>{eventObj.location}</ListGroup.Item>
-          <ListGroup.Item>{eventObj.name}</ListGroup.Item>
-          <ListGroup.Item>{eventObj.type}</ListGroup.Item>
-        </ListGroup>
-        {isCurrentUserEvent ? (
-          <>
-            <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>
-              <Button variant="info" className="m-2">
-                EDIT
+      <Card style={cardStyles}>
+        <img src={eventDetails.image} alt={eventDetails.name} style={cardImageStyles} />
+        <div>
+          <Link href={`/event/${eventObj.firebaseKey}`} passHref>
+            <h3 style={{ cursor: 'pointer' }}>{eventDetails.name}</h3>
+          </Link>
+          <p>{eventObj.date}</p>
+          <p>{eventObj.location}</p>
+          <p>{eventObj.type}</p>
+          {isCurrentUserEvent ? (
+            <>
+              <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>
+                <Button size="sm" className="m-2">
+                  EDIT
+                </Button>
+              </Link>
+              <Button variant="danger" size="sm" onClick={deleteThisEvent} className="m-2">
+                DELETE
               </Button>
-            </Link>
-            <Button variant="danger" onClick={deleteThisEvent} className="m-2">
-              DELETE
-            </Button>
-          </>
-        ) : null}
+            </>
+          ) : null}
+        </div>
       </Card>
     </>
   );

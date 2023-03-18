@@ -19,6 +19,8 @@ a {
 
 body {
   background-color: #1E1E1E;
+  margin: 0;
+  padding: 0;
   color: white
 }
 
@@ -32,4 +34,13 @@ body {
 
 .card-header-custom {
   background-color: #913175;
+}
+
+.summary-column {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  font-size: 200px;
+  line-height: 2;
+  letter-spacing: 0.5px;
 }

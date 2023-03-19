@@ -72,7 +72,7 @@ function EventForm({ obj }) {
         <Form.Label>Date</Form.Label>
         <Form.Control
           label="Date"
-          type="text"
+          type="date"
           placeholder="When is this event taking place?"
           name="date"
           value={formInput.date}

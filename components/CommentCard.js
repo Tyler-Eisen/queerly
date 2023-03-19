@@ -28,9 +28,9 @@ function CommentCard({ commentObj, onUpdate }) {
       {isCurrentUserComment ? (
         <>
           <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
-            <Button variant="info" className="m-2">EDIT</Button>
+            <Button size="sm" variant="info" className="m-2">EDIT</Button>
           </Link>
-          <Button variant="danger" onClick={deleteThisComment} className="m-2">DELETE</Button>
+          <Button size="sm" variant="danger" onClick={deleteThisComment} className="m-2"> DELETE</Button>
         </>
       ) : null}
     </Card>

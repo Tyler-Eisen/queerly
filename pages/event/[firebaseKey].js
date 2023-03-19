@@ -36,6 +36,8 @@ function ViewEvent() {
             Location: {eventDetails.location}
             <br />
             Date: {eventDetails.date}
+            <br />
+            Price: {eventDetails.price}
           </h5>
           <hr />
         </div>

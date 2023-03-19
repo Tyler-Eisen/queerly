@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -15,6 +16,7 @@ function Home() {
       <Head>
         <title>queerly</title>
       </Head>
+      <img src="/images/queerly-main2.png" alt="queerly logo" />
       <h1>Hi Gay! Welcome To queerly. </h1>
       <h2>What are you interested in today?</h2>
       <Link passHref href="/event/event">

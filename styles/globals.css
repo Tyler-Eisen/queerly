@@ -30,6 +30,11 @@ body {
 
 .navbar{
   background-color: #913175;
+  color: whitesmoke
+}
+
+.nav-link{
+  color: whitesmoke
 }
 
 .card-header-custom {

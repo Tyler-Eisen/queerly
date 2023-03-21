@@ -5,24 +5,24 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { getSingleResource, deleteSingleResource } from '../api/resourceData';
+import { getSingleMedia, deleteSingleMedia } from '../api/mediaData';
 import { useAuth } from '../utils/context/authContext';
 
-function ResourceCard({ resourceObj, onUpdate }) {
+function MediaCard({ mediaObj, onUpdate }) {
   const { user } = useAuth();
-  const [resourceDetails, setResourceDetails] = useState({});
+  const [mediaDetails, setmediaDetails] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getSingleResource(resourceObj.firebaseKey).then(setResourceDetails);
-  }, [resourceObj, firebaseKey]);
+    getSingleMedia(mediaObj.firebaseKey).then(setmediaDetails);
+  }, [mediaObj, firebaseKey]);
 
-  const isCurrentUserResource = user && user.uid === resourceObj.uid;
+  const isCurrentUserMedia = user && user.uid === mediaObj.uid;
 
-  const deleteThisResource = () => {
-    if (window.confirm('Are you sure you want to delete this resource?')) {
-      deleteSingleResource(resourceObj.firebaseKey).then(() => onUpdate());
+  const deleteThisMedia = () => {
+    if (window.confirm('Are you sure you want to delete this piece of Media?')) {
+      deleteSingleMedia(mediaObj.firebaseKey).then(() => onUpdate());
     }
   };
 
@@ -47,26 +47,26 @@ function ResourceCard({ resourceObj, onUpdate }) {
   return (
     <>
       <Head>
-        <title>Resources</title>
+        <title>Media</title>
       </Head>
       <Card style={cardStyles}>
-        <img src={resourceDetails.image} alt={resourceDetails.name} style={cardImageStyles} />
+        <img src={mediaDetails.image} alt={mediaDetails.name} style={cardImageStyles} />
         <div>
-          <Link href={`/resource/${resourceObj.firebaseKey}`} passHref>
-            <h3 style={{ cursor: 'pointer' }}>{resourceDetails.name}</h3>
+          <Link href={`/media/${mediaObj.firebaseKey}`} passHref>
+            <h3 style={{ cursor: 'pointer' }}>{mediaDetails.name}</h3>
           </Link>
-          <p>{resourceObj.price}</p>
-          <p>{resourceObj.location}</p>
-          <p>{resourceObj.name}</p>
-          <p>{resourceObj.type}</p>
-          {isCurrentUserResource ? (
+          <p>{mediaObj.name}</p>
+          <p>{mediaObj.type}</p>
+          <p>{mediaObj.details}</p>
+          <p>{mediaObj.price}</p>
+          {isCurrentUserMedia ? (
             <>
-              <Link href={`/resource/edit/${resourceObj.firebaseKey}`} passHref>
+              <Link href={`/media/edit/${mediaObj.firebaseKey}`} passHref>
                 <Button size="sm" className="m-2">
                   EDIT
                 </Button>
               </Link>
-              <Button variant="danger" size="sm" onClick={deleteThisResource} className="m-2">
+              <Button variant="danger" size="sm" onClick={deleteThisMedia} className="m-2">
                 DELETE
               </Button>
             </>
@@ -77,11 +77,11 @@ function ResourceCard({ resourceObj, onUpdate }) {
   );
 }
 
-ResourceCard.propTypes = {
-  resourceObj: PropTypes.shape({
+MediaCard.propTypes = {
+  mediaObj: PropTypes.shape({
     name: PropTypes.string,
     price: PropTypes.string,
-    location: PropTypes.string,
+    details: PropTypes.string,
     firebaseKey: PropTypes.string,
     type: PropTypes.string,
     uid: PropTypes.string,
@@ -89,4 +89,4 @@ ResourceCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default ResourceCard;
+export default MediaCard;

@@ -72,7 +72,7 @@ function EventForm({ obj }) {
         <Form.Label>Date</Form.Label>
         <Form.Control
           label="Date"
-          type="text"
+          type="date"
           placeholder="When is this event taking place?"
           name="date"
           value={formInput.date}
@@ -106,7 +106,7 @@ function EventForm({ obj }) {
           ))}
         </Form.Select>
       </Form.Group>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} A Resource</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Event</Button>
     </Form>
   );
 }

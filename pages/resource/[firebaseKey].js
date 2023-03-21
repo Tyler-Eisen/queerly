@@ -33,10 +33,10 @@ function ViewResource() {
             <br />
             Price: {resourceDetails.price}
           </h5>
-          <hr />
+          {/* <hr /> */}
         </div>
       </div>
-      <hr />
+      {/* <hr /> */}
       <Head>
         <title>Comments</title>
       </Head>

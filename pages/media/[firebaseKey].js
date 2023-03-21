@@ -4,40 +4,40 @@ import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
 import CommentForm from '../../components/forms/CommentForm';
 import CommentCard from '../../components/CommentCard';
-import { getEventComments, getSingleEvent } from '../../api/eventData';
+import { getMediaComments, getSingleMedia } from '../../api/mediaData';
 
 function ViewEvent() {
-  const [eventDetails, setEventDetails] = useState({});
+  const [mediaDetails, setMediaDetails] = useState({});
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { firebaseKey } = router.query;
   const updateCommentsList = () => {
-    getEventComments(firebaseKey).then(setComments);
+    getMediaComments(firebaseKey).then(setComments);
   };
 
   useEffect(() => {
-    getSingleEvent(firebaseKey).then(setEventDetails);
-    getEventComments(firebaseKey).then(setComments);
+    getSingleMedia(firebaseKey).then(setMediaDetails);
+    getMediaComments(firebaseKey).then(setComments);
   }, [firebaseKey]);
   return (
     <>
       <Head>
-        <title>{eventDetails.name}</title>
+        <title>{mediaDetails.name}</title>
       </Head>
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column" />
         <div className="text-white ms-5 details">
           <h5>
             <div className="d-flex flex-column">
-              <Image src={eventDetails.image} alt={eventDetails.image} style={{ height: '200px', width: '200px' }} />
+              <Image src={mediaDetails.image} alt={mediaDetails.image} style={{ height: '200px', width: '200px' }} />
             </div>
-            Name: {eventDetails.name}
+            Name: {mediaDetails.name}
             <br />
-            Location: {eventDetails.location}
+            Location: {mediaDetails.location}
             <br />
-            Date: {eventDetails.date}
+            Date: {mediaDetails.date}
             <br />
-            Price: {eventDetails.price}
+            Price: {mediaDetails.price}
           </h5>
           {/* <hr /> */}
         </div>
@@ -50,7 +50,7 @@ function ViewEvent() {
       </Head>
       <div>
         {comments.map((comment) => (
-          <CommentCard commentObj={comment} onUpdate={() => getEventComments(firebaseKey).then(setComments)} />
+          <CommentCard commentObj={comment} onUpdate={() => getMediaComments(firebaseKey).then(setComments)} />
         ))}
       </div>
     </>

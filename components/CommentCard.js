@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Card, ListGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { deleteSingleComment } from '../api/commentData';
 import { useAuth } from '../utils/context/authContext';
@@ -20,20 +20,20 @@ function CommentCard({ commentObj, onUpdate }) {
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Header>{commentObj.comment}</Card.Header>
-      <ListGroup variant="flush">
-        {/* <ListGroup.Item>{commentObj.eventId}</ListGroup.Item> */}
-      </ListGroup>
+    <div key={commentObj.firebaseKey} className="mb-3">
       {isCurrentUserComment ? (
-        <>
-          <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref>
-            <Button variant="info" className="m-2">EDIT</Button>
-          </Link>
-          <Button variant="danger" onClick={deleteThisComment} className="m-2">DELETE</Button>
-        </>
-      ) : null}
-    </Card>
+        <div className="d-flex justify-content-between">
+          <div>
+            {commentObj.comment}
+          </div>
+          <div>
+            <Link href={`/comment/edit/${commentObj.firebaseKey}`} passHref><Button>Edit</Button></Link>
+            <Button onClick={deleteThisComment}>DELETE</Button>
+          </div>
+        </div>
+      ) : commentObj.comment}
+      <hr />
+    </div>
   );
 }
 

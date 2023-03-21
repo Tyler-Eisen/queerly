@@ -3,12 +3,12 @@ import { useRouter } from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
-import { createResource, updateResource } from '../../api/resourceData';
+import { createMedia, updateMedia } from '../../api/mediaData';
 
 const initialState = {
   name: '',
   type: '',
-  location: '',
+  details: '',
   price: '',
   firebaseKey: '',
 };
@@ -20,7 +20,15 @@ const priceOptions = [
   '> $100',
 ];
 
-function ResourceForm({ obj }) {
+const typeOptions = [
+  'Podcast',
+  'Tv-show',
+  'Film',
+  'Book',
+  'Other',
+];
+
+function MediaForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
@@ -41,14 +49,14 @@ function ResourceForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateResource(formInput)
-        .then(() => router.push('/resource/resource'));
+      updateMedia(formInput)
+        .then(() => router.push('/media/media'));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      createResource(payload).then(({ name }) => {
+      createMedia(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateResource(patchPayload).then(() => {
-          router.push('/resource/resource');
+        updateMedia(patchPayload).then(() => {
+          router.push('/media/media');
         });
       });
     }
@@ -61,7 +69,7 @@ function ResourceForm({ obj }) {
         <Form.Control
           label="Name"
           type="text"
-          placeholder="What's this resource called?."
+          placeholder="What's this event called?."
           name="name"
           value={formInput.name}
           onChange={handleChange}
@@ -69,28 +77,34 @@ function ResourceForm({ obj }) {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
-        <Form.Label>Location</Form.Label>
+        <Form.Label>details</Form.Label>
         <Form.Control
-          label="location"
+          label="details"
           type="text"
-          placeholder="When is this resource available?"
-          name="location"
-          value={formInput.location}
+          placeholder="Tell us something about your recommendation."
+          name="details"
+          value={formInput.details}
           onChange={handleChange}
           required
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
         <Form.Label>Type</Form.Label>
-        <Form.Control
+        <Form.Select
           label="Type"
-          type="text"
-          placeholder="Is this resource in person, online, or both?"
+          type="type"
+          placeholder="What kind of media is this?"
           name="type"
-          value={formInput.type}
+          value={formInput.date}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Select a price range</option>
+          {typeOptions.map((option) => (
+            <option key={option} value={option}>{option}</option>
+          ))}
+        </Form.Select>
+
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
         <Form.Label>Price</Form.Label>
@@ -106,22 +120,23 @@ function ResourceForm({ obj }) {
           ))}
         </Form.Select>
       </Form.Group>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Resource</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Event</Button>
     </Form>
   );
 }
-ResourceForm.propTypes = {
+
+MediaForm.propTypes = {
   obj: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.string,
-    type: PropTypes.string,
+    event: PropTypes.string,
+    date: PropTypes.string,
+    details: PropTypes.string,
     price: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
 
-ResourceForm.defaultProps = {
+MediaForm.defaultProps = {
   obj: initialState,
 };
 
-export default ResourceForm;
+export default MediaForm;

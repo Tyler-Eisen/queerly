@@ -1,0 +1,56 @@
+{
+  "-MkeJh4lIHZ1vCbcxfsa": {
+  "name": "Call Me By Your Name",
+  "type": "film",
+  "price": 9.99,
+  "firebaseKey": "-MkeJh4lIHZ1vCbcxfsa",
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRDtqzFejuwWDwGc41npRohO8lsVRfwzGXkjpinHQ3ZRuEvZWKH",
+  "details": "Call Me By Your Name is a romantic coming-of-age film directed by Luca Guadagnino, based on the novel of the same name by André Aciman. It follows the story of Elio, a 17-year-old who falls in love with Oliver, a 24-year-old graduate student who is staying at his family's villa in Northern Italy during the summer of 1983."
+  },
+  "-MkeJh5Rejq1I-5KXoCb": {
+  "name": "The L Word",
+  "type": "tv show",
+  "price": 19.99,
+  "firebaseKey": "-MkeJh5Rejq1I-5KXoCb",
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://media.them.us/photos/630669657a05d9caabfd3453/1:1/w_864,h_864,c_limit/lwordgenerationq.jpg",
+  "details": "The L Word is a drama series that revolves around the lives and loves of a group of LGBTQ+ women living in Los Angeles. The show premiered in 2004 and ran for six seasons. It was praised for its representation of LGBTQ+ characters and storylines, as well as its exploration of issues such as identity, family, and relationships."
+  },
+  "-MkeJh5SUxbzU6qLdZgK": {
+  "name": "Gender Outlaws: The Next Generation",
+  "type": "book",
+  "price": 12.99,
+  "firebaseKey": "-MkeJh5SUxbzU6qLdZgK",
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51sO28mFzwL._AC_UF1000,1000_QL80_.jpg",
+  "details": "Gender Outlaws: The Next Generation is a non-fiction book by Kate Bornstein and S. Bear Bergman, published in 2010. The book is a collection of essays, stories, and artwork by a diverse group of writers and artists who explore the intersections of gender, sexuality, and identity. It has been praised for its thought-provoking and inclusive approach to these topics."
+  },
+  "-MkeJh5bHvBPtVvpVLcG": {
+  "name": "Queer Eye",
+  "type": "tv show",
+  "price": 14.99,
+  "firebaseKey": "-MkeJh5bHvBPtVvpVLcG",
+  "uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+  "image": "https://www.tvguide.com/a/img/catalog/provider/1/1/1-7590629307.jpg",
+  "details": "Queer Eye is a reality series that follows a group of LGBTQ+ experts as they provide makeovers and lifestyle advice to people in need. The show premiered in 2018 and has been praised for its positive and uplifting messages about self-care, acceptance, and inclusivity."
+},
+"-MkeJh5c7a2JbGNzNnDm": {
+"name": "Queer as Folk",
+"type": "tv show",
+"price": 24.99,
+"firebaseKey": "-MkeJh5c7a2JbGNzNnDm",
+"uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+"image": "https://m.media-amazon.com/images/M/MV5BZTkyZjA0Y2UtMzdhNy00OGQxLTgxNDYtOTE5NzE3ODA5Mzc0XkEyXkFqcGdeQXVyOTA3MTMyOTk@._V1_FMjpg_UX1000_.jpg",
+"details": "Queer as Folk is a drama series that explores the lives and relationships of a group of gay men and women living in Pittsburgh. The show premiered in 2000 and ran for five seasons. It was praised for its groundbreaking representation of LGBTQ+ characters and storylines, as well as its frank and honest portrayal of issues such as HIV/AIDS, homophobia, and discrimination."
+},
+"-MkeJh5deNfhupqxusjS": {
+"name": "Fun Home",
+"type": "book",
+"price": 8.99,
+"firebaseKey": "-MkeJh5deNfhupqxusjS",
+"uid": "icHMIus1aFeK9ferxs35vrudt4w2",
+"image": "https://cdn.penguin.co.uk/dam-assets/books/9781529116168/9781529116168-jacket-large.jpg",
+"details": "Fun Home is a graphic memoir by Alison Bechdel, published in 2006. The book explores Bechdel's relationship with her father and her own sexuality, as well as themes of family, identity, and acceptance. It was praised for its innovative use of the graphic novel format, as well as its poignant and deeply personal storytelling."
+}
+}

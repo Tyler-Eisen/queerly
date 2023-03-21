@@ -106,7 +106,7 @@ function EventForm({ obj }) {
           ))}
         </Form.Select>
       </Form.Group>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} A Resource</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Event</Button>
     </Form>
   );
 }

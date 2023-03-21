@@ -28,6 +28,11 @@ export default function NavBar() {
                 <a className="nav-link">Resources</a>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link href="/media/media">
+                <a className="nav-link">Media</a>
+              </Link>
+            </li>
           </ul>
           <button type="button" className="btn btn-danger me-3" onClick={signOut}>
             Sign Out

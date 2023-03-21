@@ -28,6 +28,12 @@ function Home() {
           Resources
         </button>
       </Link>
+      <p />
+      <Link passHref href="/media/media">
+        <button className="btn" type="button">
+          Media
+        </button>
+      </Link>
     </div>
   );
 }

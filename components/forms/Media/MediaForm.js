@@ -11,6 +11,7 @@ const initialState = {
   details: '',
   price: '',
   firebaseKey: '',
+  image: '',
 };
 
 const priceOptions = [
@@ -120,6 +121,17 @@ function MediaForm({ obj }) {
           ))}
         </Form.Select>
       </Form.Group>
+      {/* IMAGE INPUT  */}
+      <Form.Group controlId="floatingInput2" label="Book Image" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Enter an image url"
+          name="image"
+          value={formInput.image}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Event</Button>
     </Form>
   );
@@ -131,6 +143,7 @@ MediaForm.propTypes = {
     date: PropTypes.string,
     details: PropTypes.string,
     price: PropTypes.string,
+    image: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useAuth } from '../../utils/context/authContext';
-import { createMedia, updateMedia } from '../../api/mediaData';
+import { useAuth } from '../../../utils/context/authContext';
+import { createMedia, updateMedia } from '../../../api/mediaData';
 
 const initialState = {
   name: '',

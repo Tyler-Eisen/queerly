@@ -7,6 +7,9 @@ import { useAuth } from '../utils/context/authContext';
 function CommentCard({ commentObj, onUpdate }) {
   const { user } = useAuth();
 
+  if (typeof commentObj !== 'object' || commentObj === null) {
+    return null;
+  }
   const isCurrentUserComment = user && user.uid === commentObj.uid;
 
   const deleteThisComment = () => {
@@ -41,6 +44,7 @@ CommentCard.propTypes = {
   commentObj: PropTypes.shape({
     comment: PropTypes.string,
     eventId: PropTypes.string,
+    mediaId: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,

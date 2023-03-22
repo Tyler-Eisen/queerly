@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { getSingleEvent } from '../../../api/eventData';
-import EventForm from '../../../components/forms/EventForm';
+import EventForm from '../../../components/forms/Events/EventForm';
 
 export default function EditEvent() {
   const [editItem, setEditItem] = useState({});

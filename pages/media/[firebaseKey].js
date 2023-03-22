@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
-import CommentForm from '../../components/forms/CommentForm';
 import CommentCard from '../../components/CommentCard';
 import { getMediaComments, getSingleMedia } from '../../api/mediaData';
+import MediaCommentForm from '../../components/forms/Media/MediaCommentForm';
 
-function ViewEvent() {
+function ViewMedia() {
   const [mediaDetails, setMediaDetails] = useState({});
   const [comments, setComments] = useState([]);
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { firebaseKey } = router.query ?? {};
   const updateCommentsList = () => {
     getMediaComments(firebaseKey).then(setComments);
   };
@@ -42,7 +42,7 @@ function ViewEvent() {
           {/* <hr /> */}
         </div>
       </div>
-      <div> <CommentForm onUpdate={updateCommentsList} />
+      <div> <MediaCommentForm firebaseKey={firebaseKey} onUpdate={updateCommentsList} />
       </div>
       {/* <hr /> */}
       <Head>
@@ -50,11 +50,11 @@ function ViewEvent() {
       </Head>
       <div>
         {comments.map((comment) => (
-          <CommentCard commentObj={comment} onUpdate={() => getMediaComments(firebaseKey).then(setComments)} />
+          <CommentCard key={comment.firebaseKey} commentObj={comment} onUpdate={() => getMediaComments(firebaseKey).then(setComments)} />
         ))}
       </div>
     </>
   );
 }
 
-export default ViewEvent;
+export default ViewMedia;

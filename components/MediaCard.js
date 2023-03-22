@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { getSingleMedia, deleteSingleMedia } from '../api/mediaData';
+import { getSingleMedia } from '../api/mediaData';
 import { useAuth } from '../utils/context/authContext';
+import { deleteMediaComments } from '../api/mergedData';
 
 function MediaCard({ mediaObj, onUpdate }) {
   const { user } = useAuth();
@@ -22,7 +23,7 @@ function MediaCard({ mediaObj, onUpdate }) {
 
   const deleteThisMedia = () => {
     if (window.confirm('Are you sure you want to delete this piece of Media?')) {
-      deleteSingleMedia(mediaObj.firebaseKey).then(() => onUpdate());
+      deleteMediaComments(mediaObj.firebaseKey).then(() => onUpdate());
     }
   };
 
@@ -80,7 +81,7 @@ function MediaCard({ mediaObj, onUpdate }) {
 MediaCard.propTypes = {
   mediaObj: PropTypes.shape({
     name: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
     details: PropTypes.string,
     firebaseKey: PropTypes.string,
     type: PropTypes.string,

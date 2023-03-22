@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
-import CommentCard from '../../components/CommentCard';
+import CommentCard from '../../components/cards/CommentCard';
 import { getMediaComments, getSingleMedia } from '../../api/mediaData';
 import MediaCommentForm from '../../components/forms/Media/MediaCommentForm';
 
@@ -11,6 +11,7 @@ function ViewMedia() {
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { firebaseKey } = router.query ?? {};
+
   const updateCommentsList = () => {
     getMediaComments(firebaseKey).then(setComments);
   };
@@ -19,6 +20,7 @@ function ViewMedia() {
     getSingleMedia(firebaseKey).then(setMediaDetails);
     getMediaComments(firebaseKey).then(setComments);
   }, [firebaseKey]);
+
   return (
     <>
       <Head>
@@ -33,13 +35,10 @@ function ViewMedia() {
             </div>
             Name: {mediaDetails.name}
             <br />
-            Location: {mediaDetails.location}
-            <br />
-            Date: {mediaDetails.date}
+            Type: {mediaDetails.type}
             <br />
             Price: {mediaDetails.price}
           </h5>
-          {/* <hr /> */}
         </div>
       </div>
       <div> <MediaCommentForm firebaseKey={firebaseKey} onUpdate={updateCommentsList} />

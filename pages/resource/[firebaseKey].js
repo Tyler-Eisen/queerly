@@ -2,15 +2,23 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
-import { viewResourceDetails } from '../../api/resourceData';
+import { getResourceComments, getSingleResource } from '../../api/resourceData';
+import CommentCard from '../../components/cards/CommentCard';
+import ResourceCommentForm from '../../components/forms/Resource/ResourceCommentForm';
 
 function ViewResource() {
   const [resourceDetails, setResourceDetails] = useState({});
+  const [comments, setComments] = useState([]);
   const router = useRouter();
-  const { firebaseKey } = router.query;
+  const { firebaseKey } = router.query ?? {};
+
+  const updateCommentsList = () => {
+    getResourceComments(firebaseKey).then(setComments);
+  };
 
   useEffect(() => {
-    viewResourceDetails(firebaseKey).then(setResourceDetails);
+    getSingleResource(firebaseKey).then(setResourceDetails);
+    getResourceComments(firebaseKey).then(setComments);
   }, [firebaseKey]);
 
   return (
@@ -33,13 +41,19 @@ function ViewResource() {
             <br />
             Price: {resourceDetails.price}
           </h5>
-          {/* <hr /> */}
         </div>
       </div>
-      {/* <hr /> */}
+      <div>
+        <ResourceCommentForm firebaseKey={firebaseKey} onUpdate={updateCommentsList} />
+      </div>
       <Head>
         <title>Comments</title>
       </Head>
+      <div>
+        {comments.map((comment) => (
+          <CommentCard key={comment.firebaseKey} commentObj={comment} onUpdate={() => getResourceComments(firebaseKey).then(setComments)} />
+        ))}
+      </div>
     </>
   );
 }

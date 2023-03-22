@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useAuth } from '../../utils/context/authContext';
-import { createResource, updateResource } from '../../api/resourceData';
+import { useAuth } from '../../../utils/context/authContext';
+import { createResource, updateResource } from '../../../api/resourceData';
 
 const initialState = {
   name: '',

@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { getSingleResource } from '../api/resourceData';
-import { useAuth } from '../utils/context/authContext';
-import { deleteResourceComments } from '../api/mergedData';
+
+import { useAuth } from '../../utils/context/authContext';
+import { deleteSingleResource, getSingleResource } from '../../api/resourceData';
 
 function ResourceCard({ resourceObj, onUpdate }) {
   const { user } = useAuth();
@@ -23,7 +23,7 @@ function ResourceCard({ resourceObj, onUpdate }) {
 
   const deleteThisResource = () => {
     if (window.confirm('Are you sure you want to delete this resource?')) {
-      deleteResourceComments(resourceObj.firebaseKey).then(() => onUpdate());
+      deleteSingleResource(resourceObj.firebaseKey).then(() => onUpdate());
     }
   };
 

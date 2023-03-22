@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { deleteSingleComment } from '../api/commentData';
-import { useAuth } from '../utils/context/authContext';
+import { deleteSingleComment } from '../../api/commentData';
+import { useAuth } from '../../utils/context/authContext';
 
 function CommentCard({ commentObj, onUpdate }) {
   const { user } = useAuth();

@@ -74,7 +74,7 @@ const updateMedia = (payload) => new Promise((resolve, reject) => {
 });
 
 const getMediaComments = (mediaId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/comments.json?orderBy="MediaId"&equalTo="${mediaId}"`, {
+  fetch(`${endpoint}/comments.json?orderBy="mediaId"&equalTo="${mediaId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'applications/json',

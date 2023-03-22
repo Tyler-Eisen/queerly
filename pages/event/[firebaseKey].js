@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
-import CommentForm from '../../components/forms/CommentForm';
+import CommentForm from '../../components/forms/Events/CommentForm';
 import CommentCard from '../../components/CommentCard';
 import { getEventComments, getSingleEvent } from '../../api/eventData';
 

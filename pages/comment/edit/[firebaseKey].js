@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { getSingleComment } from '../../../api/commentData';
-import CommentForm from '../../../components/forms/CommentForm';
+import CommentForm from '../../../components/forms/Events/CommentForm';
 
 export default function EditComment() {
   const [editItem, setEditItem] = useState({});

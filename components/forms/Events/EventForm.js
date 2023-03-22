@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { createEvent, updateEvent } from '../../api/eventData';
-import { useAuth } from '../../utils/context/authContext';
+import { createEvent, updateEvent } from '../../../api/eventData';
+import { useAuth } from '../../../utils/context/authContext';
 
 const initialState = {
   name: '',

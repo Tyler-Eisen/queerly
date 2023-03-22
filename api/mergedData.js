@@ -1,5 +1,6 @@
 import { deleteSingleComment } from './commentData';
 import { deleteSingleEvent, getEventComments, getSingleEvent } from './eventData';
+import { deleteSingleMedia, getMediaComments } from './mediaData';
 
 const viewEventDetails = (eventFirebaseKey) => new Promise((resolve, reject) => {
   getSingleEvent(eventFirebaseKey)
@@ -23,4 +24,14 @@ const deleteEventComments = (eventId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { viewEventDetails, deleteEventComments };
+const deleteMediaComments = (mediaId) => new Promise((resolve, reject) => {
+  getMediaComments(mediaId).then((commentsArray) => {
+    const deleteCommentPromises = commentsArray.map((comment) => deleteSingleComment(comment.firebaseKey));
+
+    Promise.all(deleteCommentPromises).then(() => {
+      deleteSingleMedia(mediaId).then(resolve);
+    });
+  }).catch((error) => reject(error));
+});
+
+export { viewEventDetails, deleteEventComments, deleteMediaComments };

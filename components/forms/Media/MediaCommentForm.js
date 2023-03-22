@@ -3,14 +3,14 @@ import { useRouter } from 'next/router';
 import { Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { useAuth } from '../../utils/context/authContext';
-import { createComment, updateComment } from '../../api/commentData';
+import { useAuth } from '../../../utils/context/authContext';
+import { createComment, updateComment } from '../../../api/commentData';
 
 const initialState = {
   comment: '',
 };
 
-function CommentForm({ obj, onUpdate }) {
+function MediaCommentForm({ obj, onUpdate }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { firebaseKey } = router.query;
@@ -33,14 +33,14 @@ function CommentForm({ obj, onUpdate }) {
     e.preventDefault();
     if (obj?.firebaseKey) {
       updateComment(formInput)
-        .then(() => router.push(`/event/${obj.eventId}`));
+        .then(() => router.push(`/event/${obj.mediaId}`));
     } else {
-      const payload = { ...formInput, uid: user.uid, eventId: firebaseKey };
+      const payload = { ...formInput, uid: user.uid, mediaId: firebaseKey };
       createComment(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateComment(patchPayload).then(() => {
           onUpdate();
-          router.push(`/event/${firebaseKey}`);
+          router.push(`/media/${firebaseKey}`);
           setFormInput(initialState);
         });
       });
@@ -71,18 +71,18 @@ function CommentForm({ obj, onUpdate }) {
   );
 }
 
-CommentForm.propTypes = {
+MediaCommentForm.propTypes = {
   obj: PropTypes.shape({
     comment: PropTypes.string,
     firebaseKey: PropTypes.string,
-    eventId: PropTypes.string,
+    mediaId: PropTypes.string,
   }),
   onUpdate: PropTypes.func.isRequired,
   firebaseKey: PropTypes.string.isRequired,
 };
 
-CommentForm.defaultProps = {
+MediaCommentForm.defaultProps = {
   obj: initialState,
 };
 
-export default CommentForm;
+export default MediaCommentForm;

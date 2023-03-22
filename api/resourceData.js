@@ -74,14 +74,20 @@ const updateResource = (payload) => new Promise((resolve, reject) => {
 });
 
 const getResourceComments = (resourceId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/resource.json?orderBy="resourceId"&equalTo="${resourceId}"`, {
+  fetch(`${endpoint}/comments.json?orderBy="resourceId"&equalTo="${resourceId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'applications/json',
     },
   })
-    .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((response) => {
+      console.warn(response);
+      return response.json();
+    })
+    .then((data) => {
+      // console.warn(data);
+      resolve(Object.values(data));
+    })
     .catch(reject);
 });
 

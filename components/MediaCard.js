@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+
 import { getSingleMedia } from '../api/mediaData';
 import { useAuth } from '../utils/context/authContext';
 import { deleteMediaComments } from '../api/mergedData';

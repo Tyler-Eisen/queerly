@@ -11,6 +11,7 @@ const initialState = {
   location: '',
   price: '',
   firebaseKey: '',
+  image: '',
 };
 
 const priceOptions = [
@@ -106,6 +107,16 @@ function EventForm({ obj }) {
           ))}
         </Form.Select>
       </Form.Group>
+      <Form.Group controlId="floatingInput2" label="Book Image" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Enter an image url"
+          name="image"
+          value={formInput.image}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Event</Button>
     </Form>
   );
@@ -117,6 +128,7 @@ EventForm.propTypes = {
     date: PropTypes.string,
     location: PropTypes.string,
     price: PropTypes.string,
+    image: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

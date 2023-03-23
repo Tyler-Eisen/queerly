@@ -24,7 +24,7 @@ function ViewResource() {
   return (
     <>
       <Head>
-        <title>Resource Details</title>
+        <title>{resourceDetails.name}</title>
       </Head>
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column" />

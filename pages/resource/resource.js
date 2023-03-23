@@ -28,7 +28,7 @@ export default function ResourcePage() {
       <div className="d-flex" style={{ fontSize: '1.8rem', height: 'calc(100vh - 4rem)' }}>
         <div className="summary-container col-md-4 p-4" style={{ height: '100%', overflowY: 'auto' }}>
           <h2 style={{ fontWeight: 'bold' }}>queerly Resources</h2>
-          <p style={{ lineHeight: '1.5' }}>While being LGBTQ+ is not a mental illness, many individuals who identify as Queer face mental health challenges, particularly in the bisexual and transgender communities. Despite these challenges, most LGBTQ+ individuals exhibit incredible resilience and can thrive when surrounded by supportive families, communities, and peers. Here we have included a list of mental health resources to help you navigate the emotionally complex experience of living as as a queer person in the South</p>
+          <p style={{ lineHeight: '1.5' }}>While being LGBTQ+ is not a mental illness, many individuals who identify as Queer face mental health challenges. Despite these challenges, most LGBTQ+ individuals exhibit incredible resilience and can thrive when surrounded by supportive families, communities, and peers. Here we have included a list of mental health resources to help you navigate the emotionally complex experience of living as as a queer person in the South</p>
           <div className="text-center my-4">
             <Link href="/resource/new" passHref>
               <Button>Add A Resource</Button>

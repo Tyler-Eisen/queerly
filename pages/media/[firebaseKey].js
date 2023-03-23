@@ -24,7 +24,7 @@ function ViewMedia() {
   return (
     <>
       <Head>
-        <title>{mediaDetails.name}</title>
+        <title>{mediaDetails?.name}</title>
       </Head>
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column" />
@@ -33,11 +33,11 @@ function ViewMedia() {
             <div className="d-flex flex-column">
               <Image src={mediaDetails.image} alt={mediaDetails.image} style={{ height: '200px', width: '200px' }} />
             </div>
-            Name: {mediaDetails.name}
+            Name: {mediaDetails?.name}
             <br />
-            Type: {mediaDetails.type}
+            Type: {mediaDetails?.type}
             <br />
-            Price: {mediaDetails.price}
+            Price: {mediaDetails?.price}
           </h5>
         </div>
       </div>

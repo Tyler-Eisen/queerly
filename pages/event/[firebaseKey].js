@@ -11,6 +11,7 @@ function ViewEvent() {
   const [comments, setComments] = useState([]);
   const router = useRouter();
   const { firebaseKey } = router.query;
+
   const updateCommentsList = () => {
     getEventComments(firebaseKey).then(setComments);
   };
@@ -19,6 +20,7 @@ function ViewEvent() {
     getSingleEvent(firebaseKey).then(setEventDetails);
     getEventComments(firebaseKey).then(setComments);
   }, [firebaseKey]);
+
   return (
     <>
       <Head>

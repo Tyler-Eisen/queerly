@@ -33,7 +33,10 @@ function CommentForm({ obj, onUpdate }) {
     e.preventDefault();
     if (obj?.firebaseKey) {
       updateComment(formInput)
-        .then(() => router.push(`/event/${obj.eventId}`));
+        .then(() => {
+          console.warn(obj);
+          router.push(`/event/${obj.eventId}`);
+        });
     } else {
       const payload = { ...formInput, uid: user.uid, eventId: firebaseKey };
       createComment(payload).then(({ name }) => {

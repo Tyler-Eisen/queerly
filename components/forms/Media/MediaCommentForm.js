@@ -33,11 +33,11 @@ function MediaCommentForm({ obj, onUpdate }) {
     e.preventDefault();
     if (obj?.firebaseKey) {
       updateComment(formInput)
-        .then(() => router.push(`/event/${obj.mediaId}`));
+        .then(() => router.push(`/media/${obj.mediaId}`));
     } else {
       const payload = { ...formInput, uid: user.uid, mediaId: firebaseKey };
       createComment(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
+        const patchPayload = { firebaseKey: name, mediaId: firebaseKey };
         updateComment(patchPayload).then(() => {
           onUpdate();
           router.push(`/media/${firebaseKey}`);

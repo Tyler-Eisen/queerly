@@ -100,7 +100,7 @@ function MediaForm({ obj }) {
           onChange={handleChange}
           required
         >
-          <option value="">Select a price range</option>
+          <option value="">Select a media type</option>
           {typeOptions.map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}

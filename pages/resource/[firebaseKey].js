@@ -57,5 +57,4 @@ function ViewResource() {
     </>
   );
 }
-
 export default ViewResource;

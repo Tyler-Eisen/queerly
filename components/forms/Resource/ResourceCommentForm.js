@@ -30,13 +30,10 @@ function ResourceCommentForm({ obj, onUpdate }) {
   };
 
   const handleSubmit = (e) => {
-    console.warn('COMMENT FORM SUBMITTED #############');
-    console.warn(obj);
     e.preventDefault();
     if (obj?.firebaseKey) {
       updateComment(formInput)
         .then(() => {
-          console.warn('UPDATE RESOURCE COMMENT ###############');
           router.push(`/resource/${obj.resourceId}`);
         });
     } else {
@@ -44,9 +41,8 @@ function ResourceCommentForm({ obj, onUpdate }) {
       createComment(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateComment(patchPayload).then(() => {
-          console.warn('CREATE RESOURCE COMMENT ###############');
           onUpdate();
-          router.push(`/resource/${firebaseKey}`);
+          router.push(`/resource/${payload.resourceId}`);
           setFormInput(initialState);
         });
       });

@@ -32,7 +32,7 @@ function MediaCommentForm({ obj, onUpdate }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj?.firebaseKey) {
-      updateComment(formInput)
+      updateComment(formInput, firebaseKey)
         .then(() => router.push(`/media/${obj.mediaId}`));
     } else {
       const payload = { ...formInput, uid: user.uid, mediaId: firebaseKey };

@@ -24,22 +24,22 @@ function ViewEvent() {
   return (
     <>
       <Head>
-        <title>{eventDetails.name}</title>
+        <title>{eventDetails?.name}</title>
       </Head>
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column" />
         <div className="text-white ms-5 details">
           <h5>
             <div className="d-flex flex-column">
-              <Image src={eventDetails.image} alt={eventDetails.image} style={{ height: '200px', width: '200px' }} />
+              <Image src={eventDetails?.image} alt={eventDetails?.image} style={{ height: '200px', width: '200px' }} />
             </div>
-            Name: {eventDetails.name}
+            Name: {eventDetails?.name}
             <br />
-            Location: {eventDetails.location}
+            Location: {eventDetails?.location}
             <br />
-            Date: {eventDetails.date}
+            Date: {eventDetails?.date}
             <br />
-            Price: {eventDetails.price}
+            Price: {eventDetails?.price}
           </h5>
           {/* <hr /> */}
         </div>

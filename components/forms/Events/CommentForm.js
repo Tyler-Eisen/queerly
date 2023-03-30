@@ -34,7 +34,6 @@ function CommentForm({ obj, onUpdate }) {
     if (obj?.firebaseKey) {
       updateComment(formInput)
         .then(() => {
-          console.warn(obj);
           router.push(`/event/${obj.eventId}`);
         });
     } else {

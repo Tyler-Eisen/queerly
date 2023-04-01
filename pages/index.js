@@ -62,6 +62,8 @@ function Home() {
           align-items: flex-start;
           width: 66%;
           padding-left: 20px;
+          padding-bottom: 15px;
+          margin-top: 10px
         }
 
         .logo-container img {
@@ -74,7 +76,7 @@ function Home() {
         }
 
         .btn {
-          margin-bottom: 20px;
+          margin-bottom: 0px;
         }
       `}
       </style>

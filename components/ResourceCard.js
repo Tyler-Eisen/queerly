@@ -16,14 +16,14 @@ function ResourceCard({ resourceObj, onUpdate }) {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getSingleResource(resourceObj.firebaseKey).then(setResourceDetails);
+    getSingleResource(resourceObj?.firebaseKey).then(setResourceDetails);
   }, [resourceObj, firebaseKey]);
 
-  const isCurrentUserResource = user && user.uid === resourceObj.uid;
+  const isCurrentUserResource = user && user.uid === resourceObj?.uid;
 
   const deleteThisResource = () => {
     if (window.confirm('Are you sure you want to delete this resource?')) {
-      deleteResourceComments(resourceObj.firebaseKey).then(() => onUpdate());
+      deleteResourceComments(resourceObj?.firebaseKey).then(() => onUpdate());
     }
   };
 
@@ -51,18 +51,18 @@ function ResourceCard({ resourceObj, onUpdate }) {
         <title>Resources</title>
       </Head>
       <Card style={cardStyles}>
-        <img src={resourceDetails.image} alt={resourceDetails.name} style={cardImageStyles} />
+        <img src={resourceDetails?.image} alt={resourceDetails?.name} style={cardImageStyles} />
         <div>
-          <Link href={`/resource/${resourceObj.firebaseKey}`} passHref>
-            <h3 style={{ cursor: 'pointer' }}>{resourceDetails.name}</h3>
+          <Link href={`/resource/${resourceObj?.firebaseKey}`} passHref>
+            <h3 style={{ cursor: 'pointer' }}>{resourceDetails?.name}</h3>
           </Link>
-          <p>{resourceObj.price}</p>
-          <p>{resourceObj.location}</p>
-          <p>{resourceObj.name}</p>
-          <p>{resourceObj.type}</p>
+          <p>{resourceObj?.price}</p>
+          <p>{resourceObj?.location}</p>
+          <p>{resourceObj?.name}</p>
+          <p>{resourceObj?.type}</p>
           {isCurrentUserResource ? (
             <>
-              <Link href={`/resource/edit/${resourceObj.firebaseKey}`} passHref>
+              <Link href={`/resource/edit/${resourceObj?.firebaseKey}`} passHref>
                 <Button size="sm" className="m-2">
                   EDIT
                 </Button>

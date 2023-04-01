@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { signOut } from '../utils/auth';
+import SearchBar from './SearchBar';
 
 export default function NavBar() {
   return (
@@ -33,6 +34,7 @@ export default function NavBar() {
                 <a className="nav-link">Media</a>
               </Link>
             </li>
+            <SearchBar />
           </ul>
           <button type="button" className="btn btn-danger me-3" onClick={signOut}>
             Sign Out

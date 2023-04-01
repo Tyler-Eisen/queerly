@@ -16,14 +16,14 @@ function EventCard({ eventObj, onUpdate }) {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getSingleEvent(eventObj.firebaseKey).then(setEventDetails);
+    getSingleEvent(eventObj?.firebaseKey).then(setEventDetails);
   }, [eventObj, firebaseKey]);
 
-  const isCurrentUserEvent = user && user.uid === eventObj.uid;
+  const isCurrentUserEvent = user && user.uid === eventObj?.uid;
 
   const deleteThisEvent = () => {
     if (window.confirm('Sure you want to delete this event?')) {
-      deleteEventComments(eventObj.firebaseKey).then(() => onUpdate());
+      deleteEventComments(eventObj?.firebaseKey).then(() => onUpdate());
     }
   };
 
@@ -51,14 +51,14 @@ function EventCard({ eventObj, onUpdate }) {
         <title>Events</title>
       </Head>
       <Card style={cardStyles}>
-        <img src={eventDetails.image} alt={eventDetails.name} style={cardImageStyles} />
+        <img src={eventDetails?.image} alt={eventDetails?.name} style={cardImageStyles} />
         <div>
-          <Link href={`/event/${eventObj.firebaseKey}`} passHref>
-            <h3 style={{ cursor: 'pointer' }}>{eventDetails.name}</h3>
+          <Link href={`/event/${eventObj?.firebaseKey}`} passHref>
+            <h3 style={{ cursor: 'pointer' }}>{eventDetails?.name}</h3>
           </Link>
-          <p>{eventObj.date}</p>
-          <p>{eventObj.location}</p>
-          <p>{eventObj.type}</p>
+          <p>{eventObj?.date}</p>
+          <p>{eventObj?.location}</p>
+          <p>{eventObj?.type}</p>
           {isCurrentUserEvent ? (
             <>
               <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>

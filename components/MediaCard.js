@@ -52,7 +52,7 @@ function MediaCard({ mediaObj, onUpdate }) {
         <title>Media</title>
       </Head>
       <Card style={cardStyles}>
-        <img src={mediaDetails.image} alt={mediaDetails.name} style={cardImageStyles} />
+        <img src={mediaDetails?.image} alt={mediaDetails?.name} style={cardImageStyles} />
         <div>
           <Link href={`/media/${mediaObj.firebaseKey}`} passHref>
             <h3 style={{ cursor: 'pointer' }}>{mediaDetails.name}</h3>

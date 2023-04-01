@@ -70,7 +70,7 @@ function MediaForm({ obj }) {
         <Form.Control
           label="Name"
           type="text"
-          placeholder="What's this event called?."
+          placeholder="What's this event called?"
           name="name"
           value={formInput.name}
           onChange={handleChange}
@@ -132,7 +132,7 @@ function MediaForm({ obj }) {
           required
         />
       </Form.Group>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Event</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'}  Recommendation</Button>
     </Form>
   );
 }

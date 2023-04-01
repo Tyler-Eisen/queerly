@@ -17,7 +17,7 @@ export default function NavBar() {
           <span className="navbar-toggler-icon" />
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div className="collapse navbar-collapse d-flex justify-content-between align-items-center" id="navbarTogglerDemo01">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link href="/event/event">
@@ -34,8 +34,9 @@ export default function NavBar() {
                 <a className="nav-link">Media</a>
               </Link>
             </li>
-            <SearchBar />
+
           </ul>
+          <SearchBar className="me-3" />
           <button type="button" className="btn btn-danger me-3" onClick={signOut}>
             Sign Out
           </button>

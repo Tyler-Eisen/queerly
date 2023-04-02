@@ -14,6 +14,12 @@ const initialState = {
   image: '',
 };
 
+const typeOptions = [
+  'Telemed',
+  'In-Person',
+  'Flex',
+];
+
 const priceOptions = [
   'Free',
   '$10-$50',
@@ -83,15 +89,18 @@ function ResourceForm({ obj }) {
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
         <Form.Label>Type</Form.Label>
-        <Form.Control
+        <Form.Select
           label="Type"
-          type="text"
-          placeholder="Is this resource in person, online, or both?"
           name="type"
           value={formInput.type}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Select a type</option>
+          {typeOptions.map((option) => (
+            <option key={option} value={option}>{option}</option>
+          ))}
+        </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3" controlId="floatinginput1">
         <Form.Label>Price</Form.Label>

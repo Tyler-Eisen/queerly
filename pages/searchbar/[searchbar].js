@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getEvents } from '../../api/eventData';
@@ -53,9 +54,21 @@ export default function SearchBar() {
   return (
     <>
       <div className="d-flex flex-wrap">
-        {searchEvents.map((event) => <EventCard key={event.firebaseKey} eventObj={event} onUpdate={searchAllEvents} />)}
-        {searchResources.map((resource) => <ResourceCard key={resource.firebaseKey} resourceObj={resource} onUpdate={searchAllResources} />)}
-        {searchMedia.map((content) => <MediaCard key={content.firebaseKey} mediaObj={content} onUpdate={searchAllMedia} />)}
+        {searchEvents.map((event) => (
+          <div className="d-flex" key={event.firebaseKey}>
+            <EventCard eventObj={event} onUpdate={searchAllEvents} />
+          </div>
+        ))}
+        {searchResources.map((resource) => (
+          <div className="d-flex" key={resource.firebaseKey}>
+            <ResourceCard resourceObj={resource} onUpdate={searchAllResources} />
+          </div>
+        ))}
+        {searchMedia.map((content) => (
+          <div className="d-flex" key={content.firebaseKey}>
+            <MediaCard mediaObj={content} onUpdate={searchAllMedia} />
+          </div>
+        ))}
       </div>
     </>
   );

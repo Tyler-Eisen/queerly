@@ -4,84 +4,67 @@ import {
 } from 'react-bootstrap';
 import Link from 'next/link';
 import Head from 'next/head';
-import { getEvents } from '../../api/eventData';
+import { getResources } from '../../api/resourceData';
 import { useAuth } from '../../utils/context/authContext';
-import EventCard from '../../components/EventCard';
+import ResourceCard from '../../components/ResourceCard';
 
-export default function EventPage() {
-  const [events, setEvents] = useState([]);
-  const [selectedRange, setSelectedRange] = useState('');
+export default function ResourcePage() {
+  const [resources, setResources] = useState([]);
+  const [selectedType, setSelectedType] = useState('');
 
   const { user } = useAuth();
 
-  const getAllTheEvents = () => {
-    const startDate = new Date();
-    const endDate = new Date();
-    switch (selectedRange) {
-      case 'next-month':
-        endDate.setMonth(startDate.getMonth() + 1);
-        break;
-      case 'next-three-months':
-        endDate.setMonth(startDate.getMonth() + 3);
-        break;
-      case 'next-six-months':
-        endDate.setMonth(startDate.getMonth() + 6);
-        break;
-      case 'next-year':
-        endDate.setFullYear(startDate.getFullYear() + 1);
-        break;
-      default:
-        // If no range is selected, fetch all events
-        endDate.setFullYear(startDate.getFullYear() + 1000);
-        break;
-    }
-    getEvents().then((data) => {
-      const filteredData = data.filter((event) => {
-        const eventDate = new Date(event.date);
-        return eventDate >= startDate && eventDate < endDate;
+  const getAllTheResources = (type = '') => {
+    getResources(user.uid)
+      .then((data) => {
+        if (type === '') {
+          setResources(data);
+        } else {
+          setResources(data.filter((item) => item.type === type));
+        }
       });
-      // console.warn(filteredData);
-      setEvents(filteredData);
-    });
   };
-  console.warn(selectedRange);
 
   useEffect(() => {
-    getAllTheEvents();
+    getAllTheResources();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedRange]);
+  }, []);
 
-  const handleRangeChange = (event) => {
-    setSelectedRange(event.target.value);
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+    getAllTheResources(event.target.value);
   };
 
   return (
     <>
       <Head>
-        <title>Events</title>
+        <title>Resources</title>
       </Head>
       <div className="d-flex" style={{ fontSize: '1.8rem', height: 'calc(100vh - 4rem)' }}>
-        <div className="summary-container col-md-4 p-4 width: '100%', margin: '0'" style={{ height: '100%', overflowY: 'auto' }}>
-          <h2 style={{ fontWeight: 'bold' }}>queerly Events</h2>
-          <p style={{ lineHeight: '1.5' }}>Our mission is to help LGBTQ+ individuals find a way to create community in place. Part of that is helping you find events near you which will give you the chance to meet other members of the community while celebrating your queerness! We strive to find a wide variety of events to connect you with and encourage you to add any events you would like others to know about. Click on an event for further information as well as a chance to see what other users are saying about it!</p>
-          <div className="">
-            <Link href="/event/new" passHref>
-              <Button>Add An Event</Button>
-            </Link>
+        <div className="summary-container col-md-4 p-4" style={{ height: '100%', overflowY: 'auto' }}>
+          <h2 style={{ fontWeight: 'bold' }}>queerly Resources</h2>
+          <p style={{ lineHeight: '1.5' }}>While being LGBTQ+ is not a mental illness, many individuals who identify as Queer face mental health challenges. Despite these challenges, most LGBTQ+ individuals exhibit incredible resilience and can thrive when surrounded by supportive families, communities, and peers. Here we have included a list of mental health resources to help you navigate the emotionally complex experience of living as as a queer person in the South</p>
+          <div className="d-flex align-items-center justify-content-between my-4">
+            <div>
+              <Link href="/resource/new" passHref>
+                <Button>Add A Resource</Button>
+              </Link>
+            </div>
+            <div style={{ marginLeft: '10px' }}>
+              <Form.Select onChange={handleTypeChange} value={selectedType} style={{ display: 'inline-block', width: 'auto' }}>
+                <option value="">All</option>
+                <option value="In-Person">In-Person</option>
+                <option value="Telemed">Telemed</option>
+                <option value="Flex">Flex</option>
+              </Form.Select>
+            </div>
           </div>
-          <Form.Select onChange={handleRangeChange} value={selectedRange} style={{ display: 'inline-block', width: 'auto' }}>
-            <option value="">All events</option>
-            <option value="next-month">Next month</option>
-            <option value="next-three-months">Next 3 months</option>
-            <option value="next-six-months">Next 6 months</option>
-            <option value="next-year">Next year</option>
-          </Form.Select>
         </div>
         <div className="card-container col-md-8 p-4" style={{ fontSize: '1rem', height: '100%', overflowY: 'auto' }}>
           <Row className="justify-content-center">
-            {events.map((event) => (
-              <Col key={event.firebaseKey} md={6} className="mb-4">
-                <EventCard uid={user.uid} eventObj={event} onUpdate={getAllTheEvents} />
+            {resources.map((resource) => (
+              <Col key={resource.firebaseKey} md={6} className="mb-4">
+                <ResourceCard resourceObj={resource} onUpdate={getAllTheResources} />
               </Col>
             ))}
           </Row>

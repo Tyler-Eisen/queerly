@@ -21,16 +21,16 @@ const priceOptions = [
   '> $100',
 ];
 
-function EventForm({ obj }) {
+function EventForm({ obj }) { // Setting up a state for the form input with an initial value of an empty string
   const [formInput, setFormInput] = useState(initialState);
-  const router = useRouter();
-  const { user } = useAuth();
+  const router = useRouter(); // Initializing the useRouter hook
+  const { user } = useAuth(); // Initializing the useAuth hook
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { // The handleChange function is called when a change is made to the input field
     const { name, value } = e.target;
 
     setFormInput((prevState) => ({
@@ -39,17 +39,17 @@ function EventForm({ obj }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // The handleSubmit function is called when the form is submitted
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateEvent(formInput)
+      updateEvent(formInput) // If the Event already exists (has a firebaseKey), the updateEvent function is called with the updated formInput
         .then(() => router.push('/event/event'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
-      createEvent(payload).then(({ name }) => {
+      const payload = { ...formInput, uid: user.uid };// If the Event doesn't exist yet, a new payload is created with the formInput, and the user's uid
+      createEvent(payload).then(({ name }) => { // The createEvent function is called with the payload, and the returned object's name property is extracted
         const patchPayload = { firebaseKey: name };
-        updateEvent(patchPayload).then(() => {
-          router.push('/event/event');
+        updateEvent(patchPayload).then(() => { // The updateEvent function is called again with a new payload containing the name property of the returned object
+          router.push('/event/event'); // The user is redirected to the event page
         });
       });
     }

@@ -10,19 +10,26 @@ import { useAuth } from '../../utils/context/authContext';
 import { deleteSingleResource, getSingleResource } from '../../api/resourceData';
 
 function ResourceCard({ resourceObj, onUpdate }) {
+  // Using the useAuth hook to get the current user
   const { user } = useAuth();
+  /* Defining a state variable resourceDetails using the useState hook */
   const [resourceDetails, setResourceDetails] = useState({});
+  /* Using the useRouter hook to get the current router object */
   const router = useRouter();
+  /* Extracting the firebaseKey parameter from the router query object */
   const { firebaseKey } = router.query;
 
+  /* Defining a useEffect hook to load the resource details when the component mounts or when the resourceObj or firebaseKey props change */
   useEffect(() => {
     getSingleResource(resourceObj.firebaseKey).then(setResourceDetails);
   }, [resourceObj, firebaseKey]);
 
+  /* Checking if the current user is the author of the resource */
   const isCurrentUserResource = user && user.uid === resourceObj.uid;
 
   const deleteThisResource = () => {
     if (window.confirm('Are you sure you want to delete this resource?')) {
+      /* Deleting the resource using the deleteSingleResource function and updating the resource list */
       deleteSingleResource(resourceObj.firebaseKey).then(() => onUpdate());
     }
   };

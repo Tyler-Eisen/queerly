@@ -1,8 +1,12 @@
+// Import client credentials from utils
 import { clientCredentials } from '../utils/client';
 
+// Set the endpoint for API calls
 const endpoint = clientCredentials.databaseURL;
 
+// GET ALL EVENTS
 const getEvents = () => new Promise((resolve, reject) => {
+  // Make a GET request to retrieve all events
   fetch(`${endpoint}/events.json`, {
     method: 'GET',
     headers: {
@@ -11,6 +15,7 @@ const getEvents = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      // If there are events, resolve with an array of event objects
       if (data) {
         resolve(Object.values(data));
       } else {
@@ -20,7 +25,9 @@ const getEvents = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// CREATE EVENT
 const createEvent = (payload) => new Promise((resolve, reject) => {
+  // Make a POST request to create a new event
   fetch(`${endpoint}/events.json`, {
     method: 'POST',
     headers: {
@@ -35,6 +42,7 @@ const createEvent = (payload) => new Promise((resolve, reject) => {
 
 // GET SINGLE EVENT
 const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
+  // Make a GET request to retrieve a single event by its firebase key
   fetch(`${endpoint}/events/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -48,6 +56,7 @@ const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
 
 // DELETE EVENT
 const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
+  // Make a DELETE request to delete a single event by its firebase key
   fetch(`${endpoint}/events/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
@@ -61,6 +70,7 @@ const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
 
 // UPDATE EVENT
 const updateEvent = (payload) => new Promise((resolve, reject) => {
+  // Make a PATCH request to update an existing event
   fetch(`${endpoint}/events/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
@@ -74,6 +84,7 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
 });
 
 const getEventComments = (eventId) => new Promise((resolve, reject) => {
+  // Make a GET request to retrieve all event comments for a specific event ID
   fetch(`${endpoint}/comments.json?orderBy="eventId"&equalTo="${eventId}"`, {
     method: 'GET',
     headers: {
@@ -86,6 +97,7 @@ const getEventComments = (eventId) => new Promise((resolve, reject) => {
 });
 
 const viewEventDetails = (firebaseKey) => new Promise((resolve, reject) => {
+  // Make a GET request to retrieve event details for a specific firebase key
   fetch(`${endpoint}/events/${firebaseKey}.json`, {
     method: 'GET',
     headers: {

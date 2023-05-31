@@ -11,19 +11,26 @@ import { useAuth } from '../utils/context/authContext';
 import { deleteMediaComments } from '../api/mergedData';
 
 function MediaCard({ mediaObj, onUpdate }) {
+  // Using the useAuth hook to get the current user
   const { user } = useAuth();
+  /* Defining a state variable mediaDetails using the useState hook */
   const [mediaDetails, setmediaDetails] = useState({});
+  /* Using the useRouter hook to get the current router object */
   const router = useRouter();
+  /* Extracting the firebaseKey parameter from the router query object */
   const { firebaseKey } = router.query;
 
+  /* Defining a useEffect hook to load the resource details when the component mounts or when the resourceObj or firebaseKey props change */
   useEffect(() => {
     getSingleMedia(mediaObj.firebaseKey).then(setmediaDetails);
   }, [mediaObj, firebaseKey]);
 
+  /* Checking if the current user is the author of the media recommendation */
   const isCurrentUserMedia = user && user.uid === mediaObj.uid;
 
   const deleteThisMedia = () => {
     if (window.confirm('Are you sure you want to delete this piece of Media?')) {
+      /* Deleting the resource using the deleteSingleResource function and updating the resource list */
       deleteMediaComments(mediaObj.firebaseKey).then(() => onUpdate());
     }
   };

@@ -11,16 +11,17 @@ const initialState = {
 };
 
 function CommentForm({ obj, onUpdate }) {
+  // Setting up a state for the form input with an initial value of an empty string
   const [formInput, setFormInput] = useState(initialState);
-  const router = useRouter();
-  const { firebaseKey } = router.query;
-  const { user } = useAuth();
+  const router = useRouter();// Initializing the useRouter hook
+  const { firebaseKey } = router.query;// Extracting the firebaseKey from the router query object
+  const { user } = useAuth();// Initializing the useAuth hook
 
   useEffect(() => {
     if (obj?.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { // The handleChange function is called when a change is made to the input field
     const { name, value } = e.target;
 
     setFormInput((prevState) => ({
@@ -29,21 +30,21 @@ function CommentForm({ obj, onUpdate }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // The handleSubmit function is called when the form is submitted
     e.preventDefault();
     if (obj?.firebaseKey) {
-      updateComment(formInput)
+      updateComment(formInput) // If the comment already exists (has a firebaseKey), the updateComment function is called with the updated formInput
         .then(() => {
           router.push(`/event/${obj.eventId}`);
         });
     } else {
-      const payload = { ...formInput, uid: user.uid, eventId: firebaseKey };
-      createComment(payload).then(({ name }) => {
+      const payload = { ...formInput, uid: user.uid, eventId: firebaseKey };// If the comment doesn't exist yet, a new payload is created with the formInput, the user's uid, and the eventId
+      createComment(payload).then(({ name }) => { // The createComment function is called with the payload, and the returned object's name property is extracted
         const patchPayload = { firebaseKey: name };
-        updateComment(patchPayload).then(() => {
+        updateComment(patchPayload).then(() => { // The updateComment function is called again with a new payload containing the name property of the returned object
           onUpdate();
-          router.push(`/event/${firebaseKey}`);
-          setFormInput(initialState);
+          router.push(`/event/${firebaseKey}`); // The user is redirected to the event page
+          setFormInput(initialState); // The form input is reset to its initial state
         });
       });
     }

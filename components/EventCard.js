@@ -10,19 +10,26 @@ import { deleteEventComments } from '../api/mergedData';
 import { useAuth } from '../utils/context/authContext';
 
 function EventCard({ eventObj, onUpdate }) {
+  // Using the useAuth hook to get the current user
   const { user } = useAuth();
+  /* Defining a state variable eventDetails using the useState hook */
   const [eventDetails, setEventDetails] = useState({});
+  /* Using the useRouter hook to get the current router object */
   const router = useRouter();
+  /* Extracting the firebaseKey parameter from the router query object */
   const { firebaseKey } = router.query;
 
+  // Fetch the details of the event using the getSingleEvent API when the component mounts or when eventObj or firebaseKey changes
   useEffect(() => {
     getSingleEvent(eventObj?.firebaseKey).then(setEventDetails);
   }, [eventObj, firebaseKey]);
 
+  /* Checking if the current user is the author of the event */
   const isCurrentUserEvent = user && user.uid === eventObj?.uid;
 
   const deleteThisEvent = () => {
     if (window.confirm('Sure you want to delete this event?')) {
+      /* Deleting the event using the deleteSingleEvent function and updating the event list */
       deleteEventComments(eventObj?.firebaseKey).then(() => onUpdate());
     }
   };

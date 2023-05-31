@@ -5,19 +5,25 @@ import { deleteSingleComment } from '../../api/commentData';
 import { useAuth } from '../../utils/context/authContext';
 
 function CommentCard({ commentObj, onUpdate }) {
+  // Using the useAuth hook to get the current user
   const { user } = useAuth();
 
+  // If commentObj is not an object, return null
   if (typeof commentObj !== 'object' || commentObj === null) {
     return null;
   }
+
+  // Checking if the current user is the author of the comment
   const isCurrentUserComment = user && user.uid === commentObj.uid;
 
   const deleteThisComment = () => {
     if (window.confirm('Sure you want to delete this comment?')) {
+      // Deleting the comment using the deleteSingleComment function and updating the comment list
       deleteSingleComment(commentObj.firebaseKey).then(() => onUpdate());
     }
   };
 
+  // If commentObj is null, return null
   if (!commentObj) {
     return null;
   }
